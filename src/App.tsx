@@ -1,9 +1,18 @@
 import React from 'react';
 
-function App() {
-  return (
-    <h1>teste de aplicação</h1>
-  );
-}
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import Routes from './routes';
+
+import GlobalStyles from './styles/global';
+
+const App: React.FC = () => (
+  <>
+    <GlobalStyles />
+    <Router>
+      <Routes />
+    </Router>
+  </>
+);
 
 export default App;
