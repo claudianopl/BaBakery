@@ -24,6 +24,7 @@
     "prettier"
   ],
   "rules": {
+    "react/jsx-boolean-value00": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": [

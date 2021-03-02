@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
 import facebook from '../../assets/icons/facebook.svg';
 import instagram from '../../assets/icons/instagram.svg';
@@ -13,9 +14,9 @@ const Header: React.FC = () => {
     <header style={{ background: 'var(--header)' }}>
       <Container>
         <nav>
-          <a href="#">Quem Somos</a>
-          <a href="#">EQUIPE</a>
-          <a href="#">CONTATO</a>
+          <NavLink to="#">Quem Somos</NavLink>
+          <NavLink to="#">EQUIPE</NavLink>
+          <NavLink to="#">CONTATO</NavLink>
         </nav>
 
         <Logo>
