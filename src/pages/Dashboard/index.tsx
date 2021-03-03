@@ -2,6 +2,7 @@ import React from 'react';
 
 import HeaderComponents from '../../components/Header';
 import SectionBannerWithTitle from '../../components/SectionBannerWithTitle';
+import CompanyHistorySection from '../../components/CompanyHistorySection';
 
 const Dashboard: React.FC = () => {
   return (
@@ -9,6 +10,8 @@ const Dashboard: React.FC = () => {
       <HeaderComponents />
 
       <SectionBannerWithTitle />
+
+      <CompanyHistorySection />
     </>
   );
 };

@@ -18,6 +18,20 @@ export const SectionBanner = styled.section`
       color: var(--white);
       font-size: 2.5rem;
       line-height: 3.13rem;
+      animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+    }
+
+    @keyframes text-focus-in {
+      0% {
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+      }
+      100% {
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+      }
     }
 
     button {
@@ -32,6 +46,62 @@ export const SectionBanner = styled.section`
       background-color: transparent;
       line-height: 1.19rem;
       margin-top: 2.07rem;
+      animation: bounce-left 0.8s 1s both;
+      opacity: 0;
+
+      @keyframes bounce-left {
+        0% {
+          -webkit-transform: translateX(-48px);
+          transform: translateX(-48px);
+          -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+          opacity: 0;
+        }
+        24% {
+          opacity: 1;
+        }
+        40% {
+          -webkit-transform: translateX(-26px);
+          transform: translateX(-26px);
+          -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+        }
+        65% {
+          -webkit-transform: translateX(-13px);
+          transform: translateX(-13px);
+          -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+        }
+        82% {
+          -webkit-transform: translateX(-6.5px);
+          transform: translateX(-6.5px);
+          -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+        }
+        93% {
+          -webkit-transform: translateX(-4px);
+          transform: translateX(-4px);
+          -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+        }
+        25%,
+        55%,
+        75%,
+        87%,
+        98% {
+          -webkit-transform: translateX(0px);
+          transform: translateX(0px);
+          -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+        }
+        100% {
+          -webkit-transform: translateX(0px);
+          transform: translateX(0px);
+          -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+          opacity: 1;
+        }
+      }
 
       &:hover,
       &:focus {
