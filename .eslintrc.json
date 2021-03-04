@@ -24,6 +24,9 @@
     "prettier"
   ],
   "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "jsx-a11y/label-has-for": "off",
     "react/jsx-boolean-value00": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "no-use-before-define": "off",
