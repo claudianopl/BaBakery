@@ -9,16 +9,17 @@ export const ContainerFormContact = styled.div`
     max-width: 29.5rem;
     margin-bottom: 2.5rem;
   }
+
   button {
     border: 0;
     font-size: 0.87rem;
     font-weight: 700;
     background: var(--product-title-and-button-color);
-    padding: 0.5rem 1.75rem;
+    padding: 0.5rem 2.62rem;
     border-radius: 26px;
     color: var(--white);
-    margin: 3.75rem auto 5.06rem;
-    display: flex;
+    margin-left: 5.62rem;
+    margin-top: 0.43rem;
     outline: 0;
     transition: background-color 0.2s;
   }

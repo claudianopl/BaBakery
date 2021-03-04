@@ -6,7 +6,7 @@ export const Container = styled.div`
   height: 8.125rem;
   margin: 0 8.125rem;
   display: grid;
-  grid-template-columns: 35% 30% 40%;
+  grid-template-columns: 1fr 1fr 1fr;
 
   nav {
     height: 8.125rem;

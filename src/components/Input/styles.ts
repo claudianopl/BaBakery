@@ -8,7 +8,7 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  margin-left: 90px;
+  margin-left: 5.62rem;
   width: 24rem;
   border: 1px solid #c8c8c8;
   font-size: 0.875rem;

@@ -8,7 +8,7 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  margin-left: 90px;
+  margin-left: 5.62rem;
   width: 24rem;
   border: 1px solid #c8c8c8;
   font-size: 0.875rem;
@@ -46,7 +46,7 @@ export const Container = styled.div<ContainerProps>`
     props.isFocused &&
     css`
       color: #d6613e;
-      border: 2px solid #d6613e;
+      border-color: #d6613e;
     `}
 
   ${(props) =>

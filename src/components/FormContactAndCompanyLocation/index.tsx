@@ -56,7 +56,12 @@ const FormContact: React.FC = () => {
       <Form ref={formRef} onSubmit={handleSubmit}>
         <InputBlock>
           <label htmlFor="name">Nome</label>
-          <Input icon={FiUser} name="name" placeholder="Ex.: Renata Lopes" />
+          <Input
+            icon={FiUser}
+            name="name"
+            id="name"
+            placeholder="Ex.: Renata Lopes"
+          />
         </InputBlock>
         <InputBlock>
           <label htmlFor="phone">Telefone</label>
@@ -64,6 +69,7 @@ const FormContact: React.FC = () => {
             mask="(99) 9 9999-9999"
             icon={FiSmartphone}
             name="phone"
+            id="phone"
             placeholder="(xx) x xxxx.xxxx"
           />
         </InputBlock>
@@ -72,6 +78,7 @@ const FormContact: React.FC = () => {
           <Input
             icon={FiMail}
             name="email"
+            id="email"
             placeholder="exemplo@exemplo.com.br"
           />
         </InputBlock>
@@ -80,6 +87,7 @@ const FormContact: React.FC = () => {
           <Textarea
             icon={FiAlignLeft}
             name="message"
+            id="message"
             placeholder="Digite aqui a sua mensagem"
           />
         </InputBlock>
