@@ -1,6 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { darken } from 'polished';
+
+interface IsViewMore {
+  isView?: boolean;
+}
 
 export const Container = styled.div`
   margin: 0 8.63rem;
@@ -42,11 +46,12 @@ export const Products = styled.div`
   grid-gap: 3.12rem 2.68rem;
   overflow: hidden;
   > div {
+    outline: 0;
     cursor: pointer;
     background: var(--white);
     min-height: 28rem;
     position: relative;
-    animation: move 400ms;
+    animation: move 500ms;
     @keyframes move {
       from {
         opacity: 0;

@@ -1,15 +1,16 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 
 import { Container, Ident, Products } from './styles';
 
 import ModalProducts from '../ModalProducts';
 import api from '../../service/api';
 import formatValue from '../../utils/formatValue';
+import { ModalContext } from '../../hooks/modalData';
 
 interface IProduct {
-  id: number;
+  id: string;
   image: string;
   title: string;
   description: string;
@@ -18,24 +19,20 @@ interface IProduct {
 
 const ProductsSection: React.FC = () => {
   /**
-   * Sending the data to the modal
+   * Using the Modal Hook
    */
-  const [isProductsModalOpen, setIsProductsModalOpen] = useState(false);
+  const { products, setId, openOrCloseModal, isProductsModalOpen } = useContext(
+    ModalContext,
+  );
 
-  /**
-   * Redeeming fake API products
-   */
-  const [products, setProducts] = useState<IProduct[] | any>([]);
+  const showModalToTheUser = useCallback(
+    (id: string): void => {
+      openOrCloseModal();
 
-  useEffect(() => {
-    async function loadProducts(): Promise<void> {
-      const response = await api.get('products');
-
-      setProducts(response.data);
-    }
-
-    loadProducts();
-  }, []);
+      setId(id);
+    },
+    [openOrCloseModal, setId],
+  );
 
   /**
    * View more
@@ -58,8 +55,8 @@ const ProductsSection: React.FC = () => {
               if (index <= 2) {
                 return (
                   <div
-                    onClick={() => setIsProductsModalOpen(true)}
-                    onKeyPress={() => setIsProductsModalOpen(true)}
+                    onClick={() => showModalToTheUser(product.id)}
+                    onKeyPress={() => showModalToTheUser(product.id)}
                     role="button"
                     tabIndex={0}
                   >
@@ -69,26 +66,23 @@ const ProductsSection: React.FC = () => {
                   </div>
                 );
               }
-            })}
 
-            {isViewMore &&
-              products.map((product, index) => {
-                if (index >= 3) {
-                  return (
-                    <div
-                      onClick={() => setIsProductsModalOpen(true)}
-                      onKeyPress={() => setIsProductsModalOpen(true)}
-                      role="button"
-                      tabIndex={0}
-                      className="animate"
-                    >
-                      <img src={product.image} alt="Products" />
-                      <h5>{product.title}</h5>
-                      <p>{formatValue(product.price)}</p>
-                    </div>
-                  );
-                }
-              })}
+              return (
+                <div
+                  onClick={() => showModalToTheUser(product.id)}
+                  onKeyPress={() => showModalToTheUser(product.id)}
+                  role="button"
+                  tabIndex={0}
+                  style={
+                    isViewMore ? { display: 'block' } : { display: 'none' }
+                  }
+                >
+                  <img src={product.image} alt="Products" />
+                  <h5>{product.title}</h5>
+                  <p>{formatValue(product.price)}</p>
+                </div>
+              );
+            })}
           </Products>
 
           <button type="button" onClick={openProducts}>

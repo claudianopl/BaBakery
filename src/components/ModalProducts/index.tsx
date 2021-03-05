@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import { RiSubtractLine, RiCloseFill } from 'react-icons/ri';
 import { BsPlus } from 'react-icons/bs';
 
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
 
+import { ModalContext } from '../../hooks/modalData';
 import fatiaDeTorataGeladaDeCafeComChocolateAmargo from '../../assets/fatiaDeTorataGeladaDeCafeComChocolateAmargo.png';
 
 import {
@@ -17,8 +18,20 @@ import {
   ButtonForBuyProducts,
   CloseModal,
 } from './styles';
+import formatValue from '../../utils/formatValue';
 
 const ModalProducts: React.FC = () => {
+  /**
+   * data modal
+   */
+  const { modalData, openOrCloseModal, productsId } = useContext(ModalContext);
+
+  const product = modalData(productsId);
+
+  const closeModalToTheUser = useCallback(() => {
+    openOrCloseModal();
+  }, [openOrCloseModal]);
+
   /**
    * Product Quantity
    */
@@ -38,19 +51,15 @@ const ModalProducts: React.FC = () => {
     <Overlay>
       <Container>
         <AwesomeSlider className="ProductsImage" organicArrows={false}>
-          <div data-src={fatiaDeTorataGeladaDeCafeComChocolateAmargo} />
-          <div data-src={fatiaDeTorataGeladaDeCafeComChocolateAmargo} />
-          <div data-src={fatiaDeTorataGeladaDeCafeComChocolateAmargo} />
+          <div data-src={product?.image} />
+          <div data-src={product?.image} />
+          <div data-src={product?.image} />
         </AwesomeSlider>
 
         <DescriptionProducts>
-          <h4>Tortilette de Laranja Lima com Amoras</h4>
-          <p className="price">R$12,00</p>
-          <p className="description">
-            Lorem ipsum dolor sit amet, consectetur adip elit, sed do tempor
-            incididun ut labore et dolore magna aliqua. Ut enim ad mi , quis
-            nostrud veniam exercitation.
-          </p>
+          <h4>{product?.title}</h4>
+          <p className="price">{formatValue(product?.price)}</p>
+          <p className="description">{product?.description}</p>
 
           <QuantityAndAddCar>
             <ActionButton type="button" onClick={quantityIncremet}>
@@ -65,7 +74,7 @@ const ModalProducts: React.FC = () => {
               Adicionar ao carrinho
             </ButtonForBuyProducts>
 
-            <CloseModal>
+            <CloseModal onClick={closeModalToTheUser}>
               <RiCloseFill color="#d6613e" size={21} />
             </CloseModal>
           </QuantityAndAddCar>
