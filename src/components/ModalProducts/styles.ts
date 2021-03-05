@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import fatiaDeTorataGeladaDeCafeComChocolateAmargo from '../../assets/fatiaDeTorataGeladaDeCafeComChocolateAmargo.png';
+import { darken } from 'polished';
 
 export const Overlay = styled.div`
   background: rgba(203, 203, 203, 0.8);
@@ -20,22 +20,25 @@ export const Container = styled.div`
   padding: 45px 42px;
   display: flex;
   justify-content: center;
-`;
-
-export const ImagesArea = styled.div`
-  margin-right: 35px;
-  > img {
-    max-width: 297px;
-    max-height: 297px;
-  }
-  div {
-    margin-top: 23px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 0 25px;
-    img {
-      max-width: 82px;
-      max-height: 82px;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.2);
+  position: relative;
+  .ProductsImage {
+    margin-right: 20px;
+    width: 297px;
+    height: 300px;
+    --slider-height-percentage: 70%;
+    --slider-transition-duration: 500ms;
+    --control-bullet-color: #d6613e;
+    --control-bullet-active-color: ${darken(0.1, '#d6613e')};
+    --control-bullet-width: 10px;
+    --loader-bar-color: #fff;
+    --loader-bar-height: 2px;
+    .awssld__bullets {
+      bottom: -30px;
+    }
+    .awssld__bullets button {
+      width: 10px;
+      height: 10px;
     }
   }
 `;
@@ -94,4 +97,14 @@ export const ButtonForBuyProducts = styled.button`
   outline: 0;
   text-transform: uppercase;
   transition: background-color 0.2s;
+`;
+
+export const CloseModal = styled.button`
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  background: transparent;
+  border: 0;
+  font-size: 0px;
+  outline: 0;
 `;

@@ -1,6 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { MdLocationOn } from 'react-icons/md';
 
+import api from '../../service/api';
 import HeaderComponents from '../../components/Header';
 import SectionBannerWithTitle from '../../components/SectionBannerWithTitle';
 import CompanyHistorySection from '../../components/CompanyHistorySection';
@@ -32,7 +33,6 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <ModalProducts />
       <HeaderComponents />
 
       <SectionBannerWithTitle />

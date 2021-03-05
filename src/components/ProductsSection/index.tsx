@@ -1,66 +1,68 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { Container, Ident, Products } from './styles';
 
-import MacaronsDiversos from '../../assets/macaronsDiversos.png';
-import FatiaDeTorataGeladaDeCafeComChocolateAmargo from '../../assets/fatiaDeTorataGeladaDeCafeComChocolateAmargo.png';
-import TortilleteDeLaranjaLimaComAmoras from '../../assets/tortilleteDeLaranjaLimaComAmoras.png';
+import ModalProducts from '../ModalProducts';
+import api from '../../service/api';
+import formatValue from '../../utils/formatValue';
+
+interface IProduct {
+  id: number;
+  image: string;
+  title: string;
+  description: string;
+  price: number;
+}
 
 const ProductsSection: React.FC = () => {
+  /**
+   * Sending the data to the modal
+   */
+  const [isProductsModalOpen, setIsProductsModalOpen] = useState(false);
+
+  /**
+   * Redeeming fake API products
+   */
+  const [products, setProducts] = useState<IProduct[] | any>([]);
+
+  useEffect(() => {
+    async function loadProducts(): Promise<void> {
+      const response = await api.get('products');
+
+      setProducts(response.data);
+    }
+
+    loadProducts();
+  }, []);
+
   return (
-    <section>
-      <Container>
-        <h2>Produtos</h2>
-        <Ident />
+    <>
+      <section>
+        <Container>
+          <h2>Produtos</h2>
+          <Ident />
 
-        <Products>
-          <div>
-            <img src={MacaronsDiversos} alt="Macrons Diversos" />
-            <h5>Macarons Diversos 90g</h5>
-            <p>R$9,00</p>
-          </div>
-          <div>
-            <img
-              src={TortilleteDeLaranjaLimaComAmoras}
-              alt="Tortilette de Laranja"
-            />
-            <h5>Tortilette de Laranja Lima com Amoras</h5>
-            <p>R$12,00</p>
-          </div>
-          <div>
-            <img
-              src={FatiaDeTorataGeladaDeCafeComChocolateAmargo}
-              alt="Fatia de Torta Gelada"
-            />
-            <h5>Fatia de Torta Gelada de Café com Chocolate Amargo</h5>
-            <p>R$14,00</p>
-          </div>
-          <div>
-            <img src={MacaronsDiversos} alt="Macrons Diversos" />
-            <h5>Macarons Diversos 90g</h5>
-            <p>R$9,00</p>
-          </div>
-          <div>
-            <img
-              src={TortilleteDeLaranjaLimaComAmoras}
-              alt="Tortilette de Laranja"
-            />
-            <h5>Tortilette de Laranja Lima com Amoras</h5>
-            <p>R$12,00</p>
-          </div>
-          <div>
-            <img
-              src={FatiaDeTorataGeladaDeCafeComChocolateAmargo}
-              alt="Fatia de Torta Gelada"
-            />
-            <h5>Fatia de Torta Gelada de Café com Chocolate Amargo</h5>
-            <p>R$14,00</p>
-          </div>
-        </Products>
+          <Products>
+            {products.map((product) => (
+              <div
+                onClick={() => setIsProductsModalOpen(true)}
+                onKeyPress={() => setIsProductsModalOpen(true)}
+                role="button"
+                tabIndex={0}
+              >
+                <img src={product.image} alt="Products" />
+                <h5>{product.title}</h5>
+                <p>{formatValue(product.price)}</p>
+              </div>
+            ))}
+          </Products>
 
-        <button type="button">Ver menos</button>
-      </Container>
-    </section>
+          <button type="button">Ver menos</button>
+        </Container>
+      </section>
+
+      {isProductsModalOpen && <ModalProducts />}
+    </>
   );
 };
 

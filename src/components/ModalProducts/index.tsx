@@ -1,7 +1,10 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useCallback, useState } from 'react';
-import { RiSubtractLine } from 'react-icons/ri';
+import { RiSubtractLine, RiCloseFill } from 'react-icons/ri';
 import { BsPlus } from 'react-icons/bs';
+
+import AwesomeSlider from 'react-awesome-slider';
+import 'react-awesome-slider/dist/styles.css';
 
 import fatiaDeTorataGeladaDeCafeComChocolateAmargo from '../../assets/fatiaDeTorataGeladaDeCafeComChocolateAmargo.png';
 
@@ -10,12 +13,15 @@ import {
   Container,
   QuantityAndAddCar,
   ActionButton,
-  ImagesArea,
   DescriptionProducts,
   ButtonForBuyProducts,
+  CloseModal,
 } from './styles';
 
 const ModalProducts: React.FC = () => {
+  /**
+   * Product Quantity
+   */
   const [quantityProducts, setQuantityProducts] = useState(1);
 
   const quantityIncremet = useCallback(() => {
@@ -31,28 +37,12 @@ const ModalProducts: React.FC = () => {
   return (
     <Overlay>
       <Container>
-        <ImagesArea>
-          <img
-            src={fatiaDeTorataGeladaDeCafeComChocolateAmargo}
-            alt="Fatia de bolo"
-          />
-          <div>
-            <img
-              src={fatiaDeTorataGeladaDeCafeComChocolateAmargo}
-              alt="Fatia de bolo"
-            />
+        <AwesomeSlider className="ProductsImage" organicArrows={false}>
+          <div data-src={fatiaDeTorataGeladaDeCafeComChocolateAmargo} />
+          <div data-src={fatiaDeTorataGeladaDeCafeComChocolateAmargo} />
+          <div data-src={fatiaDeTorataGeladaDeCafeComChocolateAmargo} />
+        </AwesomeSlider>
 
-            <img
-              src={fatiaDeTorataGeladaDeCafeComChocolateAmargo}
-              alt="Fatia de bolo"
-            />
-
-            <img
-              src={fatiaDeTorataGeladaDeCafeComChocolateAmargo}
-              alt="Fatia de bolo"
-            />
-          </div>
-        </ImagesArea>
         <DescriptionProducts>
           <h4>Tortilette de Laranja Lima com Amoras</h4>
           <p className="price">R$12,00</p>
@@ -71,7 +61,13 @@ const ModalProducts: React.FC = () => {
               <RiSubtractLine size={20} color="#646464" />
             </ActionButton>
 
-            <ButtonForBuyProducts>Adicionar ao carrinho</ButtonForBuyProducts>
+            <ButtonForBuyProducts type="button">
+              Adicionar ao carrinho
+            </ButtonForBuyProducts>
+
+            <CloseModal>
+              <RiCloseFill color="#d6613e" size={21} />
+            </CloseModal>
           </QuantityAndAddCar>
         </DescriptionProducts>
       </Container>
