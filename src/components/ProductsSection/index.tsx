@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { Container, Ident, Products } from './styles';
@@ -35,6 +37,15 @@ const ProductsSection: React.FC = () => {
     loadProducts();
   }, []);
 
+  /**
+   * View more
+   */
+  const [isViewMore, setIsViewMore] = useState(false);
+
+  const openProducts = useCallback(() => {
+    isViewMore === false ? setIsViewMore(true) : setIsViewMore(false);
+  }, [isViewMore]);
+
   return (
     <>
       <section>
@@ -43,21 +54,46 @@ const ProductsSection: React.FC = () => {
           <Ident />
 
           <Products>
-            {products.map((product) => (
-              <div
-                onClick={() => setIsProductsModalOpen(true)}
-                onKeyPress={() => setIsProductsModalOpen(true)}
-                role="button"
-                tabIndex={0}
-              >
-                <img src={product.image} alt="Products" />
-                <h5>{product.title}</h5>
-                <p>{formatValue(product.price)}</p>
-              </div>
-            ))}
+            {products.map((product, index) => {
+              if (index <= 2) {
+                return (
+                  <div
+                    onClick={() => setIsProductsModalOpen(true)}
+                    onKeyPress={() => setIsProductsModalOpen(true)}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    <img src={product.image} alt="Products" />
+                    <h5>{product.title}</h5>
+                    <p>{formatValue(product.price)}</p>
+                  </div>
+                );
+              }
+            })}
+
+            {isViewMore &&
+              products.map((product, index) => {
+                if (index >= 3) {
+                  return (
+                    <div
+                      onClick={() => setIsProductsModalOpen(true)}
+                      onKeyPress={() => setIsProductsModalOpen(true)}
+                      role="button"
+                      tabIndex={0}
+                      className="animate"
+                    >
+                      <img src={product.image} alt="Products" />
+                      <h5>{product.title}</h5>
+                      <p>{formatValue(product.price)}</p>
+                    </div>
+                  );
+                }
+              })}
           </Products>
 
-          <button type="button">Ver menos</button>
+          <button type="button" onClick={openProducts}>
+            {isViewMore ? 'Ver menos' : 'Ver mais'}
+          </button>
         </Container>
       </section>
 

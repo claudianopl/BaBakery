@@ -40,11 +40,23 @@ export const Products = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 3.12rem 2.68rem;
+  overflow: hidden;
   > div {
     cursor: pointer;
     background: var(--white);
     min-height: 28rem;
     position: relative;
+    animation: move 400ms;
+    @keyframes move {
+      from {
+        opacity: 0;
+        transform: translateX(-40%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0%);
+      }
+    }
     img {
       width: 100%;
       max-height: 19.12rem;
