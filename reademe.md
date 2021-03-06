@@ -10,4 +10,4 @@ Falta fechar o modal
 
 
 ## Onde paramos
-Parei na configuração do modal, para enviar os dados e as imagens para o modal junto com os dados de desc e title, criar um hook para enviar dados para o modal toda vez que for selecionado. Além disso, criar um hook para carrinho e colocar todos os hooks dentro de um só, usando children.
+Parei em configurar o styled componente do carrinho do header, pois os tamanhos estão em pixel para transformar em rem, criar um hook para carrinho e colocar todos os hooks dentro do index da pasta hook.

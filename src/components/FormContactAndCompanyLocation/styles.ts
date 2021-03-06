@@ -32,6 +32,11 @@ export const ContainerFormContact = styled.div`
 export const InputBlock = styled.div`
   position: relative;
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  :first-child {
+    align-items: start;
+  }
   label {
     position: absolute;
     display: block;

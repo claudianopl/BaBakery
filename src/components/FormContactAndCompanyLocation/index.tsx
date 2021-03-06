@@ -82,7 +82,7 @@ const FormContact: React.FC = () => {
             placeholder="exemplo@exemplo.com.br"
           />
         </InputBlock>
-        <InputBlock>
+        <InputBlock className="textArea">
           <label htmlFor="message">Mensagem</label>
           <Textarea
             icon={FiAlignLeft}

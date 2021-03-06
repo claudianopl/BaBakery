@@ -1,13 +1,12 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useCallback, useContext, useState } from 'react';
-import { RiSubtractLine, RiCloseFill } from 'react-icons/ri';
-import { BsPlus } from 'react-icons/bs';
+import { RiCloseFill } from 'react-icons/ri';
+import { BiPlus, BiMinus } from 'react-icons/bi';
 
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
 
 import { ModalContext } from '../../hooks/modalData';
-import fatiaDeTorataGeladaDeCafeComChocolateAmargo from '../../assets/fatiaDeTorataGeladaDeCafeComChocolateAmargo.png';
 
 import {
   Overlay,
@@ -63,11 +62,11 @@ const ModalProducts: React.FC = () => {
 
           <QuantityAndAddCar>
             <ActionButton type="button" onClick={quantityIncremet}>
-              <BsPlus size={20} color="#646464" />
+              <BiPlus size={20} color="#646464" />
             </ActionButton>
             <p>{Number(quantityProducts)}</p>
             <ActionButton type="button" onClick={quantityDecrement}>
-              <RiSubtractLine size={20} color="#646464" />
+              <BiMinus size={20} color="#646464" />
             </ActionButton>
 
             <ButtonForBuyProducts type="button">
