@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { FiTrash2 } from 'react-icons/fi';
 
 import { NavLink } from 'react-router-dom';
@@ -8,7 +8,9 @@ import facebook from '../../assets/icons/facebook.svg';
 import instagram from '../../assets/icons/instagram.svg';
 import twitter from '../../assets/icons/twitter.svg';
 import shoppingCart from '../../assets/icons/shoppingCart.svg';
-import fatiaDeTorataGeladaDeCafeComChocolateAmargo from '../../assets/fatiaDeTorataGeladaDeCafeComChocolateAmargo@2x.png';
+import fatiaDeTorataGeladaDeCafeComChocolateAmargo from '../../assets/fatiaDeTorataGeladaDeCafeComChocolateAmargo.png';
+
+import { useCart } from '../../hooks/cart';
 
 import {
   Container,
@@ -21,9 +23,32 @@ import {
   TriangleUp,
   Line,
   SubTotalProducts,
+  Emptycart,
+  CartQuantity,
 } from './styles';
+import formatValue from '../../utils/formatValue';
 
 const Header: React.FC = () => {
+  /**
+   * Opening cart
+   */
+  const [isOpenCart, setIsOpenCart] = useState(false);
+
+  const handleOpenCart = useCallback(() => {
+    isOpenCart === false ? setIsOpenCart(true) : setIsOpenCart(false);
+  }, [isOpenCart]);
+  /**
+   * Making the cart dynamic
+   */
+  const {
+    products,
+    increment,
+    decrement,
+    removeItemFromCart,
+    priceTotalProducts,
+    totalItensProducts,
+  } = useCart();
+
   return (
     <header style={{ background: 'var(--header)' }}>
       <Container>
@@ -52,78 +77,74 @@ const Header: React.FC = () => {
             <a href="#">
               <img src={twitter} alt="iconTwitter" />
             </a>
-            <div>
+            <div
+              onClick={handleOpenCart}
+              onKeyPress={handleOpenCart}
+              role="button"
+              tabIndex={0}
+            >
               <img src={shoppingCart} alt="iconCart" />
-              <div>
-                <p>02</p>
-              </div>
+              {totalItensProducts() > 0 && (
+                <CartQuantity>
+                  <p>{totalItensProducts()}</p>
+                </CartQuantity>
+              )}
             </div>
           </div>
         </SocialAndCar>
-        <CartProducts>
-          <div>
-            <TriangleUp />
+        {isOpenCart && (
+          <CartProducts>
             <div>
-              <img
-                src={fatiaDeTorataGeladaDeCafeComChocolateAmargo}
-                alt="Product"
-              />
-              <div>
-                <TitleProducts>
-                  <strong>Cupcake de Morango Glaceado</strong>
-                  <button type="button">
-                    <FiTrash2 size={20} color="646464" />
-                  </button>
-                </TitleProducts>
-                <DataProducts>
-                  <div>
-                    <ActionButton type="button">
-                      <BiPlus size={20} color="#646464" />
-                    </ActionButton>
-                    <p>01</p>
-                    <ActionButton type="button">
-                      <BiMinus size={20} color="#646464" />
-                    </ActionButton>
-                  </div>
-                  <p>R$17,00</p>
-                </DataProducts>
-              </div>
+              <TriangleUp />
+              {products.length ? (
+                <>
+                  {products.map((product) => (
+                    <div>
+                      <img src={product.image} alt="Product" />
+                      <div>
+                        <TitleProducts>
+                          <strong>{product.title}</strong>
+                          <button
+                            type="button"
+                            onClick={() => removeItemFromCart(product.id)}
+                          >
+                            <FiTrash2 size={20} color="646464" />
+                          </button>
+                        </TitleProducts>
+                        <DataProducts>
+                          <div>
+                            <ActionButton
+                              type="button"
+                              onClick={() => increment(product.id)}
+                            >
+                              <BiPlus size={20} color="#646464" />
+                            </ActionButton>
+                            <p>{product.quantity}</p>
+                            <ActionButton
+                              type="button"
+                              onClick={() => decrement(product.id)}
+                            >
+                              <BiMinus size={20} color="#646464" />
+                            </ActionButton>
+                          </div>
+                          <p>{formatValue(product.price)}</p>
+                        </DataProducts>
+                      </div>
+                    </div>
+                  ))}
+                  <Line />
+                  <SubTotalProducts>
+                    <strong>Subtotal (sem frete):</strong>
+                    <p>{priceTotalProducts()}</p>
+                  </SubTotalProducts>
+                  <button type="button">Finaliza Compra</button>
+                </>
+              ) : (
+                <Emptycart>Seu carrinho está vazio</Emptycart>
+              )}
             </div>
-
-            <div>
-              <img
-                src={fatiaDeTorataGeladaDeCafeComChocolateAmargo}
-                alt="Product"
-              />
-              <div>
-                <TitleProducts>
-                  <strong>Cupcake de Morango Glaceado</strong>
-                  <button type="button">
-                    <FiTrash2 size={20} color="646464" />
-                  </button>
-                </TitleProducts>
-                <DataProducts>
-                  <div>
-                    <ActionButton type="button">
-                      <BiPlus size={20} color="#646464" />
-                    </ActionButton>
-                    <p>01</p>
-                    <ActionButton type="button">
-                      <BiMinus size={20} color="#646464" />
-                    </ActionButton>
-                  </div>
-                  <p>R$17,00</p>
-                </DataProducts>
-              </div>
-            </div>
-            <Line />
-            <SubTotalProducts>
-              <strong>Subtotal (sem frete):</strong>
-              <p>R$34,00</p>
-            </SubTotalProducts>
-            <button type="button">Finaliza Compra</button>
-          </div>
-        </CartProducts>
+          </CartProducts>
+        )}
       </Container>
       <div style={{ background: 'var(--header-line)', height: '21px' }} />
     </header>

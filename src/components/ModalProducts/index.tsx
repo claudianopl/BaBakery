@@ -6,7 +6,7 @@ import { BiPlus, BiMinus } from 'react-icons/bi';
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
 
-import { ModalContext } from '../../hooks/modalData';
+import { useModal } from '../../hooks/modalData';
 
 import {
   Overlay,
@@ -18,18 +18,22 @@ import {
   CloseModal,
 } from './styles';
 import formatValue from '../../utils/formatValue';
+import { useCart } from '../../hooks/cart';
+
+interface Product {
+  id: string;
+  title: string;
+  image: string;
+  price: number;
+}
 
 const ModalProducts: React.FC = () => {
   /**
    * data modal
    */
-  const { modalData, openOrCloseModal, productsId } = useContext(ModalContext);
+  const { modalData, openOrCloseModal, productsId } = useModal();
 
   const product = modalData(productsId);
-
-  const closeModalToTheUser = useCallback(() => {
-    openOrCloseModal();
-  }, [openOrCloseModal]);
 
   /**
    * Product Quantity
@@ -41,24 +45,36 @@ const ModalProducts: React.FC = () => {
   }, [quantityProducts]);
 
   const quantityDecrement = useCallback(() => {
-    if (quantityProducts > 0) {
+    if (quantityProducts > 1) {
       setQuantityProducts(quantityProducts - 1);
     }
   }, [quantityProducts]);
+
+  /**
+   * Adiconando produto no carrinho
+   */
+  const { addToCart } = useCart();
+  const handleAddToCart = useCallback(
+    (item: Product) => {
+      addToCart(item, quantityProducts);
+      openOrCloseModal();
+    },
+    [addToCart, quantityProducts, openOrCloseModal],
+  );
 
   return (
     <Overlay>
       <Container>
         <AwesomeSlider className="ProductsImage" organicArrows={false}>
-          <div data-src={product?.image} />
-          <div data-src={product?.image} />
-          <div data-src={product?.image} />
+          <div data-src={product.image} />
+          <div data-src={product.image} />
+          <div data-src={product.image} />
         </AwesomeSlider>
 
         <DescriptionProducts>
           <h4>{product?.title}</h4>
-          <p className="price">{formatValue(product?.price)}</p>
-          <p className="description">{product?.description}</p>
+          <p className="price">{formatValue(product.price)}</p>
+          <p className="description">{product.description}</p>
 
           <QuantityAndAddCar>
             <ActionButton type="button" onClick={quantityIncremet}>
@@ -69,11 +85,14 @@ const ModalProducts: React.FC = () => {
               <BiMinus size={20} color="#646464" />
             </ActionButton>
 
-            <ButtonForBuyProducts type="button">
+            <ButtonForBuyProducts
+              type="button"
+              onClick={() => handleAddToCart(product)}
+            >
               Adicionar ao carrinho
             </ButtonForBuyProducts>
 
-            <CloseModal onClick={closeModalToTheUser}>
+            <CloseModal onClick={openOrCloseModal}>
               <RiCloseFill color="#d6613e" size={21} />
             </CloseModal>
           </QuantityAndAddCar>

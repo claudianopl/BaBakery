@@ -83,7 +83,7 @@ export const SocialAndCar = styled.div`
   height: 8.13rem;
   margin-left: auto;
   display: flex;
-  div {
+  > div {
     display: flex;
     align-items: center;
     animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) 0.6s
@@ -98,24 +98,27 @@ export const SocialAndCar = styled.div`
     > div {
       position: relative;
       cursor: pointer;
-
-      div {
-        position: absolute;
-        left: 20px;
-        bottom: 3px;
-        width: 1.75rem;
-        height: 1.75rem;
-        background: var(--product-title-and-button-color);
-        color: #fff;
-        border-radius: 6px;
-        font-weight: 700;
-
-        p {
-          margin: auto;
-          font-size: 0.88rem;
-        }
-      }
+      outline: 0;
     }
+  }
+`;
+
+export const CartQuantity = styled.div`
+  position: absolute;
+  left: 20px;
+  bottom: 5px;
+  width: 1.75rem;
+  height: 1.75rem;
+  background: var(--product-title-and-button-color);
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 700;
+  display: flex;
+
+  p {
+    margin: auto;
+    font-size: 0.88rem;
+    text-align: center;
   }
 `;
 
@@ -125,17 +128,18 @@ export const CartProducts = styled.div`
   position: relative;
   position: absolute;
   right: -12px;
-  top: 95px;
-  max-width: 365px;
+  top: 88px;
+  width: 365px;
   > div:first-child {
     position: relative;
     margin: 24px 30px;
     > div {
       margin-bottom: 16px;
       display: flex;
+      align-items: center;
       img {
         max-width: 80px;
-        max-height: 104px;
+        height: 104px;
         margin-right: 16px;
       }
     }
@@ -152,8 +156,12 @@ export const CartProducts = styled.div`
       border-radius: 8px;
       text-transform: uppercase;
       transition: background-color 0.2s;
+
       &:hover {
         background: ${darken(0.1, '#D6613E')};
+      }
+      &:focus {
+        outline: 0;
       }
     }
   }
@@ -176,6 +184,7 @@ export const TitleProducts = styled.div`
     color: #d6613e;
     font-size: 14px;
     margin-right: 10px;
+    width: 179px;
   }
   button {
     outline: 0;
@@ -246,4 +255,10 @@ export const SubTotalProducts = styled.div`
     color: #646464;
     font-size: 14px;
   }
+`;
+
+export const Emptycart = styled.strong`
+  color: #d6613e;
+  font-size: 14px;
+  text-align: center;
 `;

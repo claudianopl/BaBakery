@@ -1,4 +1,11 @@
-import React, { createContext, useCallback, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import Error from '../utils/getValidationErrors';
 import api from '../service/api';
 
 interface IProducts {
@@ -6,7 +13,7 @@ interface IProducts {
   image: string;
   title: string;
   description: string;
-  price: number | any;
+  price: number;
 }
 
 interface IModalContext {
@@ -14,13 +21,13 @@ interface IModalContext {
   productsId: string;
   isProductsModalOpen: boolean;
   setId(id: string): void;
-  modalData(id: string): IProducts | undefined;
+  modalData(id: string): IProducts;
   openOrCloseModal(): void;
 }
 
-export const ModalContext = createContext<IModalContext>({} as IModalContext);
+const ModalContext = createContext<IModalContext>({} as IModalContext);
 
-const ModalProvider: React.FC = ({ children }) => {
+export const ModalProvider: React.FC = ({ children }) => {
   /**
    * Redeeming our API data
    */
@@ -41,6 +48,10 @@ const ModalProvider: React.FC = ({ children }) => {
   const modalData = useCallback(
     (id: string) => {
       const productData = products.find((product) => product.id === id);
+
+      if (!productData) {
+        throw new ErrorEvent('Product not exists');
+      }
 
       return productData;
     },
@@ -73,4 +84,11 @@ const ModalProvider: React.FC = ({ children }) => {
   );
 };
 
-export default ModalProvider;
+export function useModal(): IModalContext {
+  const context = useContext(ModalContext);
+  if (!context) {
+    throw new ErrorEvent('useAuth must be used whithin an AuthContext');
+  }
+
+  return context;
+}

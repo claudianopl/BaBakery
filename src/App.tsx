@@ -6,15 +6,17 @@ import Routes from './routes';
 
 import GlobalStyles from './styles/global';
 
-import ModalProvider from './hooks/modalData';
+import { ModalProvider } from './hooks/modalData';
+import { CartProvider } from './hooks/cart';
+import AppProvider from './hooks';
 
 const App: React.FC = () => (
   <>
     <GlobalStyles />
     <Router>
-      <ModalProvider>
+      <AppProvider>
         <Routes />
-      </ModalProvider>
+      </AppProvider>
     </Router>
   </>
 );

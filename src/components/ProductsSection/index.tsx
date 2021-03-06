@@ -7,7 +7,7 @@ import { Container, Ident, Products } from './styles';
 import ModalProducts from '../ModalProducts';
 import api from '../../service/api';
 import formatValue from '../../utils/formatValue';
-import { ModalContext } from '../../hooks/modalData';
+import { useModal } from '../../hooks/modalData';
 
 interface IProduct {
   id: string;
@@ -21,9 +21,7 @@ const ProductsSection: React.FC = () => {
   /**
    * Using the Modal Hook
    */
-  const { products, setId, openOrCloseModal, isProductsModalOpen } = useContext(
-    ModalContext,
-  );
+  const { products, setId, openOrCloseModal, isProductsModalOpen } = useModal();
 
   const showModalToTheUser = useCallback(
     (id: string): void => {
