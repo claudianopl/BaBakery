@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { RiCloseFill } from 'react-icons/ri';
 import { BiPlus, BiMinus } from 'react-icons/bi';
 
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
+import { motion } from 'framer-motion';
 
 import { useModal } from '../../hooks/modalData';
 
@@ -62,42 +63,79 @@ const ModalProducts: React.FC = () => {
     [addToCart, quantityProducts, openOrCloseModal],
   );
 
+  /**
+   * Aniomation
+   */
+  const fade = {
+    hidden: {
+      opacity: 0,
+      x: 0,
+      y: -100,
+      scale: 0,
+      rotate: 0,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      scale: 1,
+      rotate: 0,
+      transition: { duration: 0.3 },
+    },
+  };
+
+  const fadeExit = {
+    opacity: 0,
+    x: 0,
+    y: -100,
+    scale: 0,
+    rotate: 0,
+    transition: { duration: 0.3 },
+  };
+
   return (
     <Overlay>
-      <Container>
-        <AwesomeSlider className="ProductsImage" organicArrows={false}>
-          <div data-src={product.image} />
-          <div data-src={product.image} />
-          <div data-src={product.image} />
-        </AwesomeSlider>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={fade}
+        exit={fadeExit}
+      >
+        <Container>
+          <AwesomeSlider className="ProductsImage" organicArrows={false}>
+            <div data-src={product.image} />
+            <div data-src={product.image} />
+            <div data-src={product.image} />
+          </AwesomeSlider>
 
-        <DescriptionProducts>
-          <h4>{product?.title}</h4>
-          <p className="price">{formatValue(product.price)}</p>
-          <p className="description">{product.description}</p>
+          <DescriptionProducts>
+            <h4>{product?.title}</h4>
+            <p className="price">{formatValue(product.price)}</p>
+            <p className="description">{product.description}</p>
 
-          <QuantityAndAddCar>
-            <ActionButton type="button" onClick={quantityIncremet}>
-              <BiPlus size={20} color="#646464" />
-            </ActionButton>
-            <p>{Number(quantityProducts)}</p>
-            <ActionButton type="button" onClick={quantityDecrement}>
-              <BiMinus size={20} color="#646464" />
-            </ActionButton>
+            <QuantityAndAddCar>
+              <ActionButton type="button" onClick={quantityIncremet}>
+                <BiPlus size={20} color="#646464" />
+              </ActionButton>
+              <p>{Number(quantityProducts)}</p>
+              <ActionButton type="button" onClick={quantityDecrement}>
+                <BiMinus size={20} color="#646464" />
+              </ActionButton>
 
-            <ButtonForBuyProducts
-              type="button"
-              onClick={() => handleAddToCart(product)}
-            >
-              Adicionar ao carrinho
-            </ButtonForBuyProducts>
+              <ButtonForBuyProducts
+                type="button"
+                onClick={() => handleAddToCart(product)}
+              >
+                Adicionar ao carrinho
+              </ButtonForBuyProducts>
 
-            <CloseModal onClick={openOrCloseModal}>
-              <RiCloseFill color="#d6613e" size={21} />
-            </CloseModal>
-          </QuantityAndAddCar>
-        </DescriptionProducts>
-      </Container>
+              <CloseModal onClick={openOrCloseModal}>
+                <RiCloseFill color="#d6613e" size={21} />
+              </CloseModal>
+            </QuantityAndAddCar>
+          </DescriptionProducts>
+        </Container>
+      </motion.div>
     </Overlay>
   );
 };

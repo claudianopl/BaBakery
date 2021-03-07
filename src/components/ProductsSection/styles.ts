@@ -45,42 +45,71 @@ export const Products = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 3.12rem 2.68rem;
   overflow: hidden;
-  > div {
-    outline: 0;
-    cursor: pointer;
-    background: var(--white);
-    min-height: 28rem;
-    position: relative;
-    animation: move 500ms;
-    @keyframes move {
-      from {
-        opacity: 0;
-        transform: translateX(-40%);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0%);
-      }
+`;
+
+export const FirstProducts = styled.div`
+  outline: 0;
+  cursor: pointer;
+  background: var(--white);
+  min-height: 28rem;
+  position: relative;
+  animation: move 500ms;
+  @keyframes move {
+    from {
+      opacity: 0;
+      transform: translateX(-40%);
     }
-    img {
-      width: 100%;
-      max-height: 19.12rem;
+    to {
+      opacity: 1;
+      transform: translateX(0%);
     }
-    h5 {
-      color: var(--product-title-and-button-color);
-      margin: 1.19rem 1.62rem 0;
-      font-weight: 700;
-      font-size: 1.12rem;
-      line-height: 1.5rem;
-    }
-    p {
-      display: flex;
-      flex-direction: column;
-      align-self: flex-end;
-      margin: 0 1.62rem;
-      font-size: 1.13rem;
-      position: absolute;
-      bottom: 1.62rem;
-    }
+  }
+  img {
+    width: 100%;
+    max-height: 19.12rem;
+  }
+  h5 {
+    color: var(--product-title-and-button-color);
+    margin: 1.19rem 1.62rem 0;
+    font-weight: 700;
+    font-size: 1.12rem;
+    line-height: 1.5rem;
+  }
+  p {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    margin: 0 1.62rem;
+    font-size: 1.13rem;
+    position: absolute;
+    bottom: 1.62rem;
+  }
+`;
+
+export const ProductsAppearOnClick = styled.div`
+  outline: 0;
+  cursor: pointer;
+  background: var(--white);
+  min-height: 28rem;
+  position: relative;
+  img {
+    width: 100%;
+    max-height: 19.12rem;
+  }
+  h5 {
+    color: var(--product-title-and-button-color);
+    margin: 1.19rem 1.62rem 0;
+    font-weight: 700;
+    font-size: 1.12rem;
+    line-height: 1.5rem;
+  }
+  p {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    margin: 0 1.62rem;
+    font-size: 1.13rem;
+    position: absolute;
+    bottom: 1.62rem;
   }
 `;

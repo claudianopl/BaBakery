@@ -123,45 +123,50 @@ export const CartQuantity = styled.div`
 `;
 
 export const CartProducts = styled.div`
-  border-radius: 16px;
-  background: #fff;
-  position: relative;
-  position: absolute;
-  right: -12px;
-  top: 88px;
-  width: 365px;
+  overflow: hidden;
   > div:first-child {
+    border-radius: 16px;
     position: relative;
-    margin: 24px 30px;
+    position: absolute;
+    right: -12px;
+    top: 88px;
+    width: 365px;
+    z-index: 1;
+    background: #fff;
     > div {
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      img {
-        max-width: 80px;
-        height: 104px;
-        margin-right: 16px;
-      }
-    }
-    > div:last-child {
-      margin-bottom: 0;
-    }
+      position: relative;
+      margin: 24px 30px;
 
-    > button {
-      border: 0;
-      background: var(--product-title-and-button-color);
-      font-weight: 700;
-      color: var(--white);
-      padding: 7px 87px;
-      border-radius: 8px;
-      text-transform: uppercase;
-      transition: background-color 0.2s;
-
-      &:hover {
-        background: ${darken(0.1, '#D6613E')};
+      > div {
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        img {
+          max-width: 80px;
+          height: 104px;
+          margin-right: 16px;
+        }
       }
-      &:focus {
-        outline: 0;
+      > div:last-child {
+        margin-bottom: 0;
+      }
+
+      > button {
+        border: 0;
+        background: var(--product-title-and-button-color);
+        font-weight: 700;
+        color: var(--white);
+        padding: 7px 87px;
+        border-radius: 8px;
+        text-transform: uppercase;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background: ${darken(0.1, '#D6613E')};
+        }
+        &:focus {
+          outline: 0;
+        }
       }
     }
   }

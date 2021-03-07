@@ -1,0 +1,4 @@
+- Alterar os tamanhos do carrinho de px para rem
+- Adicionar animação no carrinho
+- Adicionar animação de scroll
+- Adicionar responsividade

@@ -1,21 +1,19 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
-import { Container, Ident, Products } from './styles';
+import { AnimatePresence, motion } from 'framer-motion';
+import {
+  Container,
+  Ident,
+  Products,
+  FirstProducts,
+  ProductsAppearOnClick,
+} from './styles';
 
 import ModalProducts from '../ModalProducts';
-import api from '../../service/api';
 import formatValue from '../../utils/formatValue';
 import { useModal } from '../../hooks/modalData';
-
-interface IProduct {
-  id: string;
-  image: string;
-  title: string;
-  description: string;
-  price: number;
-}
 
 const ProductsSection: React.FC = () => {
   /**
@@ -41,6 +39,26 @@ const ProductsSection: React.FC = () => {
     isViewMore === false ? setIsViewMore(true) : setIsViewMore(false);
   }, [isViewMore]);
 
+  /**
+   * Animation
+   */
+  const transitionTheTop = {
+    hidden: {
+      y: -500,
+    },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: (i - 2) * 0.1 },
+    }),
+  };
+
+  const transitionTheTopExit = {
+    opacity: 0,
+    y: -500,
+    transition: { duration: 0.2 },
+  };
+
   return (
     <>
       <section>
@@ -52,7 +70,7 @@ const ProductsSection: React.FC = () => {
             {products.map((product, index) => {
               if (index <= 2) {
                 return (
-                  <div
+                  <FirstProducts
                     onClick={() => showModalToTheUser(product.id)}
                     onKeyPress={() => showModalToTheUser(product.id)}
                     role="button"
@@ -61,24 +79,35 @@ const ProductsSection: React.FC = () => {
                     <img src={product.image} alt="Products" />
                     <h5>{product.title}</h5>
                     <p>{formatValue(product.price)}</p>
-                  </div>
+                  </FirstProducts>
                 );
               }
 
               return (
-                <div
-                  onClick={() => showModalToTheUser(product.id)}
-                  onKeyPress={() => showModalToTheUser(product.id)}
-                  role="button"
-                  tabIndex={0}
-                  style={
-                    isViewMore ? { display: 'block' } : { display: 'none' }
-                  }
-                >
-                  <img src={product.image} alt="Products" />
-                  <h5>{product.title}</h5>
-                  <p>{formatValue(product.price)}</p>
-                </div>
+                <AnimatePresence>
+                  {isViewMore && (
+                    <div style={{ overflow: 'hidden' }}>
+                      <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        custom={index}
+                        variants={transitionTheTop}
+                        exit={transitionTheTopExit}
+                      >
+                        <ProductsAppearOnClick
+                          onClick={() => showModalToTheUser(product.id)}
+                          onKeyPress={() => showModalToTheUser(product.id)}
+                          role="button"
+                          tabIndex={0}
+                        >
+                          <img src={product.image} alt="Products" />
+                          <h5>{product.title}</h5>
+                          <p>{formatValue(product.price)}</p>
+                        </ProductsAppearOnClick>
+                      </motion.div>
+                    </div>
+                  )}
+                </AnimatePresence>
               );
             })}
           </Products>
@@ -89,7 +118,9 @@ const ProductsSection: React.FC = () => {
         </Container>
       </section>
 
-      {isProductsModalOpen && <ModalProducts />}
+      <AnimatePresence>
+        {isProductsModalOpen && <ModalProducts />}
+      </AnimatePresence>
     </>
   );
 };

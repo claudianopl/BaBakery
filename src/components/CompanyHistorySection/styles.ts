@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   margin: auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   margin: 5.75rem 11.69rem 7.25rem;
+  grid-gap: 0 2.12rem;
 
   div {
     margin-right: auto;

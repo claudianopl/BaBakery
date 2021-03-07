@@ -1,14 +1,14 @@
 import React, { useCallback, useState } from 'react';
 import { FiTrash2 } from 'react-icons/fi';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { NavLink } from 'react-router-dom';
 import { BiPlus, BiMinus } from 'react-icons/bi';
-import logo from '../../assets/logo.svg';
 import facebook from '../../assets/icons/facebook.svg';
 import instagram from '../../assets/icons/instagram.svg';
 import twitter from '../../assets/icons/twitter.svg';
 import shoppingCart from '../../assets/icons/shoppingCart.svg';
-import fatiaDeTorataGeladaDeCafeComChocolateAmargo from '../../assets/fatiaDeTorataGeladaDeCafeComChocolateAmargo.png';
+import SvgLogo from '../../assets/logo';
 
 import { useCart } from '../../hooks/cart';
 
@@ -49,6 +49,26 @@ const Header: React.FC = () => {
     totalItensProducts,
   } = useCart();
 
+  /**
+   * Animation
+   */
+  const transitionTheTop = {
+    hidden: {
+      opacity: 0,
+      x: 0,
+    },
+    visible: {
+      opacity: 1,
+      z: 0,
+    },
+  };
+
+  const transitionTheTopExit = {
+    opacity: 0,
+
+    transition: { duration: 0.2 },
+  };
+
   return (
     <header style={{ background: 'var(--header)' }}>
       <Container>
@@ -61,7 +81,7 @@ const Header: React.FC = () => {
         <Logo>
           <a href="#">
             <div>
-              <img src={logo} alt="Ba Bakery" />
+              <SvgLogo />
             </div>
           </a>
         </Logo>
@@ -92,59 +112,68 @@ const Header: React.FC = () => {
             </div>
           </div>
         </SocialAndCar>
-        {isOpenCart && (
-          <CartProducts>
-            <div>
-              <TriangleUp />
-              {products.length ? (
-                <>
-                  {products.map((product) => (
-                    <div>
-                      <img src={product.image} alt="Product" />
-                      <div>
-                        <TitleProducts>
-                          <strong>{product.title}</strong>
-                          <button
-                            type="button"
-                            onClick={() => removeItemFromCart(product.id)}
-                          >
-                            <FiTrash2 size={20} color="646464" />
-                          </button>
-                        </TitleProducts>
-                        <DataProducts>
+        <AnimatePresence>
+          {isOpenCart && (
+            <CartProducts>
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={transitionTheTop}
+                exit={transitionTheTopExit}
+              >
+                <div>
+                  <TriangleUp />
+                  {products.length ? (
+                    <>
+                      {products.map((product) => (
+                        <div>
+                          <img src={product.image} alt="Product" />
                           <div>
-                            <ActionButton
-                              type="button"
-                              onClick={() => increment(product.id)}
-                            >
-                              <BiPlus size={20} color="#646464" />
-                            </ActionButton>
-                            <p>{product.quantity}</p>
-                            <ActionButton
-                              type="button"
-                              onClick={() => decrement(product.id)}
-                            >
-                              <BiMinus size={20} color="#646464" />
-                            </ActionButton>
+                            <TitleProducts>
+                              <strong>{product.title}</strong>
+                              <button
+                                type="button"
+                                onClick={() => removeItemFromCart(product.id)}
+                              >
+                                <FiTrash2 size={20} color="646464" />
+                              </button>
+                            </TitleProducts>
+                            <DataProducts>
+                              <div>
+                                <ActionButton
+                                  type="button"
+                                  onClick={() => increment(product.id)}
+                                >
+                                  <BiPlus size={20} color="#646464" />
+                                </ActionButton>
+                                <p>{product.quantity}</p>
+                                <ActionButton
+                                  type="button"
+                                  onClick={() => decrement(product.id)}
+                                >
+                                  <BiMinus size={20} color="#646464" />
+                                </ActionButton>
+                              </div>
+                              <p>{formatValue(product.price)}</p>
+                            </DataProducts>
                           </div>
-                          <p>{formatValue(product.price)}</p>
-                        </DataProducts>
-                      </div>
-                    </div>
-                  ))}
-                  <Line />
-                  <SubTotalProducts>
-                    <strong>Subtotal (sem frete):</strong>
-                    <p>{priceTotalProducts()}</p>
-                  </SubTotalProducts>
-                  <button type="button">Finaliza Compra</button>
-                </>
-              ) : (
-                <Emptycart>Seu carrinho está vazio</Emptycart>
-              )}
-            </div>
-          </CartProducts>
-        )}
+                        </div>
+                      ))}
+                      <Line />
+                      <SubTotalProducts>
+                        <strong>Subtotal (sem frete):</strong>
+                        <p>{priceTotalProducts()}</p>
+                      </SubTotalProducts>
+                      <button type="button">Finaliza Compra</button>
+                    </>
+                  ) : (
+                    <Emptycart>Seu carrinho está vazio</Emptycart>
+                  )}
+                </div>
+              </motion.div>
+            </CartProducts>
+          )}
+        </AnimatePresence>
       </Container>
       <div style={{ background: 'var(--header-line)', height: '21px' }} />
     </header>

@@ -1,13 +1,11 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback } from 'react';
 import { MdLocationOn } from 'react-icons/md';
 
-import api from '../../service/api';
 import HeaderComponents from '../../components/Header';
 import SectionBannerWithTitle from '../../components/SectionBannerWithTitle';
 import CompanyHistorySection from '../../components/CompanyHistorySection';
 import ProductsSection from '../../components/ProductsSection';
 import FormContact from '../../components/FormContactAndCompanyLocation';
-import ModalProducts from '../../components/ModalProducts/index';
 
 import locationCompanyIMG from '../../assets/location.png';
 import logoFooter from '../../assets/logoFooter.svg';

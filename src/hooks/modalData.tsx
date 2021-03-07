@@ -5,7 +5,6 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import Error from '../utils/getValidationErrors';
 import api from '../service/api';
 
 interface IProducts {

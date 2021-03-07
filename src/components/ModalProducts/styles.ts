@@ -22,7 +22,7 @@ export const Container = styled.div`
   justify-content: center;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.2);
   position: relative;
-  animation: fade 500ms;
+  /* animation: fade 500ms;
   @keyframes fade {
     from {
       opacity: 0;
@@ -32,7 +32,7 @@ export const Container = styled.div`
       opacity: 1;
       transform: scale(1);
     }
-  }
+  } */
 
   .ProductsImage {
     margin-right: 20px;
