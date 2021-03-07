@@ -7,6 +7,7 @@ interface IsViewMore {
 }
 
 export const Container = styled.div`
+  overflow: hidden;
   margin: 0 8.63rem;
   h2 {
     font-size: 1.87rem;
@@ -14,6 +15,7 @@ export const Container = styled.div`
   }
 
   button {
+    min-width: 8.68rem;
     border: 0;
     font-size: 0.87rem;
     font-weight: 700;
@@ -23,6 +25,7 @@ export const Container = styled.div`
     color: var(--white);
     margin: 3.75rem auto 5.06rem;
     display: flex;
+    justify-content: center;
     outline: 0;
     transition: background-color 0.2s;
   }
@@ -53,17 +56,6 @@ export const FirstProducts = styled.div`
   background: var(--white);
   min-height: 28rem;
   position: relative;
-  animation: move 500ms;
-  @keyframes move {
-    from {
-      opacity: 0;
-      transform: translateX(-40%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0%);
-    }
-  }
   img {
     width: 100%;
     max-height: 19.12rem;

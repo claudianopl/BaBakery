@@ -6,12 +6,14 @@ export const Container = styled.div`
   grid-template-columns: repeat(2, 1fr);
   margin: 5.75rem 11.69rem 7.25rem;
   grid-gap: 0 2.12rem;
+  overflow: hidden;
 
   div {
     margin-right: auto;
   }
 
   article {
+    overflow: hidden;
     h2 {
       font-size: 1.88rem;
       margin-left: 0.05rem;

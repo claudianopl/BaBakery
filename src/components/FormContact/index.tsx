@@ -1,9 +1,12 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { FiUser, FiSmartphone, FiMail, FiAlignLeft } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
+import { motion } from 'framer-motion';
+import Aos from 'aos';
 import { InputBlock, ContainerFormContact } from './styles';
+import 'aos/dist/aos.css';
 
 import Input from '../Input';
 import Textarea from '../Textarea';
@@ -49,12 +52,12 @@ const FormContact: React.FC = () => {
 
   return (
     <ContainerFormContact>
-      <h2>
+      <h2 data-aos="fade">
         Se interessou pelos nossos serviços? Manda uma mensagem pra gente. :)
       </h2>
 
       <Form ref={formRef} onSubmit={handleSubmit}>
-        <InputBlock>
+        <InputBlock data-aos="fade-right" data-aos-delay="100">
           <label htmlFor="name">Nome</label>
           <Input
             icon={FiUser}
@@ -63,7 +66,7 @@ const FormContact: React.FC = () => {
             placeholder="Ex.: Renata Lopes"
           />
         </InputBlock>
-        <InputBlock>
+        <InputBlock data-aos="fade-right" data-aos-delay="200">
           <label htmlFor="phone">Telefone</label>
           <InputMask
             mask="(99) 9 9999-9999"
@@ -73,7 +76,7 @@ const FormContact: React.FC = () => {
             placeholder="(xx) x xxxx.xxxx"
           />
         </InputBlock>
-        <InputBlock>
+        <InputBlock data-aos="fade-right" data-aos-delay="300">
           <label htmlFor="email">Email</label>
           <Input
             icon={FiMail}
@@ -82,7 +85,11 @@ const FormContact: React.FC = () => {
             placeholder="exemplo@exemplo.com.br"
           />
         </InputBlock>
-        <InputBlock className="textArea">
+        <InputBlock
+          className="textArea"
+          data-aos="fade-right"
+          data-aos-delay="400"
+        >
           <label htmlFor="message">Mensagem</label>
           <Textarea
             icon={FiAlignLeft}
@@ -92,7 +99,9 @@ const FormContact: React.FC = () => {
           />
         </InputBlock>
 
-        <button type="submit">Enviar</button>
+        <motion.button data-aos="fade-right" data-aos-delay="500" type="submit">
+          Enviar
+        </motion.button>
       </Form>
     </ContainerFormContact>
   );

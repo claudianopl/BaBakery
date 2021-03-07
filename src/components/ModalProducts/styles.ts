@@ -20,19 +20,7 @@ export const Container = styled.div`
   padding: 45px 42px;
   display: flex;
   justify-content: center;
-  box-shadow: 0 0 60px rgba(0, 0, 0, 0.2);
   position: relative;
-  /* animation: fade 500ms;
-  @keyframes fade {
-    from {
-      opacity: 0;
-      transform: scale(0.8);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  } */
 
   .ProductsImage {
     margin-right: 20px;

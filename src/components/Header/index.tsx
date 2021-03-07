@@ -97,11 +97,11 @@ const Header: React.FC = () => {
             <a href="#">
               <img src={twitter} alt="iconTwitter" />
             </a>
-            <div
+            <motion.div
               onClick={handleOpenCart}
               onKeyPress={handleOpenCart}
-              role="button"
               tabIndex={0}
+              whileTap={{ scale: 0.8 }}
             >
               <img src={shoppingCart} alt="iconCart" />
               {totalItensProducts() > 0 && (
@@ -109,7 +109,7 @@ const Header: React.FC = () => {
                   <p>{totalItensProducts()}</p>
                 </CartQuantity>
               )}
-            </div>
+            </motion.div>
           </div>
         </SocialAndCar>
         <AnimatePresence>

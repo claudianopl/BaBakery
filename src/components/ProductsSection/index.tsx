@@ -1,8 +1,10 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
-import React, { useCallback, useState } from 'react';
-
+import React, { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+
 import {
   Container,
   Ident,
@@ -10,7 +12,6 @@ import {
   FirstProducts,
   ProductsAppearOnClick,
 } from './styles';
-
 import ModalProducts from '../ModalProducts';
 import formatValue from '../../utils/formatValue';
 import { useModal } from '../../hooks/modalData';
@@ -49,22 +50,22 @@ const ProductsSection: React.FC = () => {
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: (i - 2) * 0.1 },
+      transition: { duration: 1, delay: (i - 2) * 0.1 },
     }),
   };
 
   const transitionTheTopExit = {
     opacity: 0,
     y: -500,
-    transition: { duration: 0.2 },
+    transition: { duration: 0.5 },
   };
 
   return (
     <>
       <section>
         <Container>
-          <h2>Produtos</h2>
-          <Ident />
+          <h2 data-aos="fade">Produtos</h2>
+          <Ident data-aos="slide-right" />
 
           <Products>
             {products.map((product, index) => {
@@ -75,6 +76,7 @@ const ProductsSection: React.FC = () => {
                     onKeyPress={() => showModalToTheUser(product.id)}
                     role="button"
                     tabIndex={0}
+                    data-aos="fade-down"
                   >
                     <img src={product.image} alt="Products" />
                     <h5>{product.title}</h5>
@@ -112,9 +114,13 @@ const ProductsSection: React.FC = () => {
             })}
           </Products>
 
-          <button type="button" onClick={openProducts}>
+          <motion.button
+            whileTap={{ scale: 0.8 }}
+            type="button"
+            onClick={openProducts}
+          >
             {isViewMore ? 'Ver menos' : 'Ver mais'}
-          </button>
+          </motion.button>
         </Container>
       </section>
 

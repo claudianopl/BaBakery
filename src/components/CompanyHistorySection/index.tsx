@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 import { Container } from './styles';
 
@@ -8,12 +10,12 @@ const CompanyHistorySection: React.FC = () => {
   return (
     <section>
       <Container>
-        <div>
+        <div data-aos="fade-right">
           <img src={HistoryImg} alt="Company" />
         </div>
-        <article>
+        <article data-aos="slide-left">
           <h2>História da Ba Bakery</h2>
-          <div />
+          <div data-aos="slide-right" data-aos-delay="1000" />
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim

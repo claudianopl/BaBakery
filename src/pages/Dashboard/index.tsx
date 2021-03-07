@@ -1,11 +1,13 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { MdLocationOn } from 'react-icons/md';
 
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 import HeaderComponents from '../../components/Header';
 import SectionBannerWithTitle from '../../components/SectionBannerWithTitle';
 import CompanyHistorySection from '../../components/CompanyHistorySection';
 import ProductsSection from '../../components/ProductsSection';
-import FormContact from '../../components/FormContactAndCompanyLocation';
+import FormContact from '../../components/FormContact';
 
 import locationCompanyIMG from '../../assets/location.png';
 import logoFooter from '../../assets/logoFooter.svg';
@@ -29,6 +31,13 @@ const Dashboard: React.FC = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    Aos.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
+
   return (
     <>
       <HeaderComponents />
@@ -41,23 +50,35 @@ const Dashboard: React.FC = () => {
 
       <SectionFormContactAndCompanyLocation>
         <FormContact />
-        <CompanyLocation>
-          <h3>Você também pode nos fazer uma visita.</h3>
-          <img src={locationCompanyIMG} alt="Localização da empresa" />
-          <div>
+        <CompanyLocation data-aos="fade">
+          <h3 data-aos="fade-right" data-aos-delay="100">
+            Você também pode nos fazer uma visita.
+          </h3>
+          <img
+            data-aos="fade-right"
+            data-aos-delay="200"
+            src={locationCompanyIMG}
+            alt="Localização da empresa"
+          />
+          <div data-aos="fade-right" data-aos-delay="300">
             <MdLocationOn />
             <p>
               R. Hermílio Arantes, 1040 - Vila dos Coqueiros. Graças, Recife -
               PE.
             </p>
           </div>
-          <button type="button" className="fourth">
+          <button
+            type="button"
+            className="fourth"
+            data-aos="fade-right"
+            data-aos-delay="400"
+          >
             Traçar rota
           </button>
         </CompanyLocation>
       </SectionFormContactAndCompanyLocation>
 
-      <Footer>
+      <Footer data-aos="fade">
         <ContactFooter>
           <img src={logoFooter} alt="Be Bakery" />
           <div>

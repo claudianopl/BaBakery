@@ -10,6 +10,7 @@ export const CompanyLocation = styled.div`
   background: var(--product-title-and-button-color);
   max-height: 28.75rem;
   max-width: 409px;
+  overflow: hidden;
   h3 {
     font-size: 1.56rem;
     line-height: 30px;
