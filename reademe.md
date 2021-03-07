@@ -1,2 +1,1 @@
-- Alterar os tamanhos do carrinho de px para rem
 - Adicionar responsividade

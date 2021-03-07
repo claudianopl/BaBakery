@@ -12,7 +12,7 @@ export const Container = styled.div<ContainerProps>`
   width: 24rem;
   border: 1px solid #c8c8c8;
   font-size: 0.875rem;
-  line-height: 19px;
+  line-height: 1.187rem;
   background-color: var(--white) !important;
   padding: 0.43rem 0.56rem 0.43rem;
   display: flex;
@@ -57,8 +57,8 @@ export const Container = styled.div<ContainerProps>`
 `;
 
 export const Error = styled(Tooltip)`
-  height: 20px;
-  margin-left: 16px;
+  height: 1.25rem;
+  margin-left: 1rem;
   svg {
     margin: 0;
   }

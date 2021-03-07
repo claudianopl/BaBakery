@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 export const ContainerFormContact = styled.div`
-  overflow: hidden;
   h2 {
     font-size: 2.18rem;
     line-height: 2.62rem;

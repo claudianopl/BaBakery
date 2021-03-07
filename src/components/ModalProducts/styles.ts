@@ -17,15 +17,15 @@ export const Overlay = styled.div`
 
 export const Container = styled.div`
   background: #fff;
-  padding: 45px 42px;
+  padding: 2.81rem 2.62rem;
   display: flex;
   justify-content: center;
   position: relative;
 
   .ProductsImage {
-    margin-right: 20px;
-    width: 297px;
-    height: 300px;
+    margin-right: 1.25rem;
+    width: 18.56rem;
+    height: 18.75rem;
     --slider-height-percentage: 70%;
     --slider-transition-duration: 500ms;
     --control-bullet-color: #d6613e;
@@ -45,20 +45,20 @@ export const Container = styled.div`
 
 export const DescriptionProducts = styled.div`
   h4 {
-    font-size: 18px;
-    max-width: 332px;
+    font-size: 1.125rem;
+    max-width: 20.75rem;
     color: var(--product-title-and-button-color);
   }
   .price {
-    margin-top: 7px;
-    margin-bottom: 24px;
-    font-size: 18px;
+    margin-top: 0.43rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.12rem;
   }
   .description {
-    max-width: 332px;
-    margin-bottom: 149px;
-    font-size: 14px;
-    line-height: 30px;
+    max-width: 20.75rem;
+    margin-bottom: 9.31rem;
+    font-size: 0.87rem;
+    line-height: 1.87rem;
   }
 `;
 

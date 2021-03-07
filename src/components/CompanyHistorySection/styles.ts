@@ -4,8 +4,9 @@ export const Container = styled.div`
   margin: auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  margin: 5.75rem 11.69rem 7.25rem;
-  grid-gap: 0 2.12rem;
+  max-width: 56.93rem;
+  margin: 5.75rem auto 7.25rem;
+  grid-gap: 0 3.31rem;
   overflow: hidden;
 
   div {
@@ -16,7 +17,6 @@ export const Container = styled.div`
     overflow: hidden;
     h2 {
       font-size: 1.88rem;
-      margin-left: 0.05rem;
       font-weight: 700;
     }
 

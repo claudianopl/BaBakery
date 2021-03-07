@@ -7,11 +7,11 @@ interface IsViewMore {
 }
 
 export const Container = styled.div`
+  max-width: 62.75rem;
   overflow: hidden;
-  margin: 0 8.63rem;
+  margin: 0 auto;
   h2 {
     font-size: 1.87rem;
-    margin-left: 0.05rem;
   }
 
   button {

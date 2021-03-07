@@ -4,7 +4,8 @@ import { lighten, darken } from 'polished';
 
 export const Container = styled.div`
   height: 8.125rem;
-  margin: 0 8.125rem;
+  max-width: 62.75rem;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   position: relative;
@@ -66,12 +67,10 @@ export const Logo = styled.div`
     }
     @keyframes slide-in-bck-center {
       0% {
-        -webkit-transform: translateZ(600px);
         transform: translateZ(600px);
         opacity: 0;
       }
       100% {
-        -webkit-transform: translateZ(0);
         transform: translateZ(0);
         opacity: 1;
       }
@@ -130,21 +129,21 @@ export const CartProducts = styled.div`
     position: absolute;
     right: -12px;
     top: 88px;
-    width: 365px;
+    width: 22.81rem;
     z-index: 1;
     background: #fff;
     > div {
       position: relative;
-      margin: 24px 30px;
+      margin: 1.5rem 1.87rem;
 
       > div {
-        margin-bottom: 16px;
+        margin-bottom: 1rem;
         display: flex;
         align-items: center;
         img {
-          max-width: 80px;
-          height: 104px;
-          margin-right: 16px;
+          max-width: 5rem;
+          height: 6.5rem;
+          margin-right: 1rem;
         }
       }
       > div:last-child {
@@ -156,7 +155,7 @@ export const CartProducts = styled.div`
         background: var(--product-title-and-button-color);
         font-weight: 700;
         color: var(--white);
-        padding: 7px 87px;
+        padding: 0.43rem 5.43rem;
         border-radius: 8px;
         text-transform: uppercase;
         transition: background-color 0.2s;
@@ -187,9 +186,9 @@ export const TitleProducts = styled.div`
   display: flex;
   strong {
     color: #d6613e;
-    font-size: 14px;
-    margin-right: 10px;
-    width: 179px;
+    font-size: 0.87rem;
+    margin-right: 0.62rem;
+    width: 11.18rem;
   }
   button {
     outline: 0;
@@ -207,7 +206,7 @@ export const TitleProducts = styled.div`
 export const DataProducts = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 29px;
+  margin-top: 1.81rem;
   > div {
     margin-right: auto;
     display: flex;
@@ -222,15 +221,15 @@ export const DataProducts = styled.div`
   }
 
   p {
-    font-size: 14px;
+    font-size: 0.87rem;
     color: #646464;
   }
 `;
 
 export const ActionButton = styled.button`
   transform: translateY(3px);
-  margin-right: 4px;
-  margin-left: 4px;
+  margin-right: 0.25rem;
+  margin-left: 0.25rem;
   outline: 0;
   border: 0;
   background: transparent;
@@ -240,30 +239,30 @@ export const ActionButton = styled.button`
 `;
 
 export const Line = styled.div`
-  margin: 24px auto;
+  margin: 1.5rem auto;
   height: 1px;
   background: #cbcbcb;
-  width: 239px;
+  width: 14.93rem;
 `;
 
 export const SubTotalProducts = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
   strong {
     margin-right: auto;
     color: #646464;
-    font-size: 14px;
+    font-size: 0.87rem;
   }
   p {
     font-weight: 700;
     color: #646464;
-    font-size: 14px;
+    font-size: 0.87rem;
   }
 `;
 
 export const Emptycart = styled.strong`
   color: #d6613e;
-  font-size: 14px;
+  font-size: 0.87rem;
   text-align: center;
 `;

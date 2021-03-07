@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const SectionFormContactAndCompanyLocation = styled.section`
-  margin: 0 8.125rem;
+  max-width: 62.75rem;
+  margin: 0 auto;
   display: flex;
 `;
 
@@ -9,11 +10,11 @@ export const CompanyLocation = styled.div`
   margin-left: auto;
   background: var(--product-title-and-button-color);
   max-height: 28.75rem;
-  max-width: 409px;
+  max-width: 25.56rem;
   overflow: hidden;
   h3 {
     font-size: 1.56rem;
-    line-height: 30px;
+    line-height: 1.87rem;
     margin: 1.62rem 2.12rem 0.93rem 2.12rem;
     color: var(--white);
   }
@@ -59,11 +60,6 @@ export const CompanyLocation = styled.div`
   .fourth {
     border-color: var(--white);
     color: var(--white);
-    background-image: -webkit-linear-gradient(
-      45deg,
-      var(--white) 50%,
-      transparent 50%
-    );
     background-image: linear-gradient(45deg, var(--white) 50%, transparent 50%);
     background-position: 100%;
     background-size: 400%;
@@ -78,8 +74,8 @@ export const Footer = styled.footer`
   > p {
     font-size: 0.66rem;
     color: var(--copyright);
-    margin-top: 12px;
-    margin-bottom: 14px;
+    margin-top: 0.75rem;
+    margin-bottom: 0.87rem;
     text-align: center;
   }
 `;
@@ -92,10 +88,11 @@ export const IdentCopy = styled.footer`
 `;
 
 export const ContactFooter = styled.div`
-  margin: 0 8.125rem;
+  max-width: 62.75rem;
+  margin: 0 auto;
   margin-top: 9.12rem;
   display: grid;
-  grid-template-columns: 45% 1fr 1fr;
+  grid-template-columns: 47% 2fr 1fr;
 
   > img:first-child {
     margin-left: auto;
@@ -125,9 +122,9 @@ export const ContactFooter = styled.div`
     }
 
     div {
-      width: 36px;
+      width: 2.25rem;
       height: 1px;
-      margin-left: 30px;
+      margin-left: 2.25rem;
       background: #858585;
       margin: 1rem 0 0.75rem 1.13rem;
     }
