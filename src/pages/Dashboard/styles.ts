@@ -4,6 +4,25 @@ export const SectionFormContactAndCompanyLocation = styled.section`
   max-width: 62.75rem;
   margin: 0 auto;
   display: flex;
+  // Medium devices (tablets with 768px or more)
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    max-width: none;
+    margin: 0 10%;
+    flex-direction: column;
+  }
+  // Small devices (landscape phones, 576px or more)
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    max-width: none;
+    margin: 0 12%;
+    flex-direction: column;
+  }
+
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    max-width: none;
+    margin: 0 15%;
+    flex-direction: column;
+  }
 `;
 
 export const CompanyLocation = styled.div`
@@ -68,6 +87,20 @@ export const CompanyLocation = styled.div`
   .fourth:hover {
     background-position: 0;
   }
+
+  // Medium devices (tablets with 768px or more)
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    display: none;
+  }
+  // Small devices (landscape phones, 576px or more)
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    display: none;
+  }
+
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    display: none;
+  }
 `;
 
 export const Footer = styled.footer`
@@ -78,13 +111,33 @@ export const Footer = styled.footer`
     margin-bottom: 0.87rem;
     text-align: center;
   }
+
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    button {
+      display: none;
+    }
+  }
 `;
+
 export const IdentCopy = styled.footer`
   width: 62.75rem;
   height: 1px;
   background: #c8c8c8;
   margin: auto;
   margin-top: 2.12rem;
+  // Medium devices (tablets with 768px or more)
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    width: 27rem;
+  }
+  // Small devices (landscape phones, 576px or more)
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    width: 22rem;
+  }
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    width: 13rem;
+  }
 `;
 
 export const ContactFooter = styled.div`
@@ -129,6 +182,36 @@ export const ContactFooter = styled.div`
       margin: 1rem 0 0.75rem 1.13rem;
     }
   }
+
+  // Medium devices (tablets with 768px or more)
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    max-width: none;
+    margin: 0 10%;
+    margin-top: 4rem;
+  }
+
+  // Small devices (landscape phones, 576px or more)
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    max-width: none;
+    margin: 0 12%;
+    margin-top: 4rem;
+    grid-template-columns: 1fr 2fr 1fr;
+    > img:first-child {
+      margin: 0;
+      margin-right: 1rem;
+    }
+  }
+
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    max-width: none;
+    margin: 0 15%;
+    margin-top: 4rem;
+    display: block;
+    > img:first-child {
+      display: none;
+    }
+  }
 `;
 
 export const BackToTheTop = styled.div`
@@ -144,5 +227,3 @@ export const BackToTheTop = styled.div`
     outline: 0;
   }
 `;
-
-export const Ident = styled.div``;

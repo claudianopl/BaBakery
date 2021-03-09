@@ -19,7 +19,6 @@ import mailSVG from '../../assets/icons/mail.svg';
 import {
   SectionFormContactAndCompanyLocation,
   CompanyLocation,
-  Ident,
   ContactFooter,
   Footer,
   IdentCopy,
@@ -67,12 +66,7 @@ const Dashboard: React.FC = () => {
               PE.
             </p>
           </div>
-          <button
-            type="button"
-            className="fourth"
-            data-aos="fade-right"
-            data-aos-delay="400"
-          >
+          <button type="button" className="fourth">
             Traçar rota
           </button>
         </CompanyLocation>
@@ -90,7 +84,7 @@ const Dashboard: React.FC = () => {
               <img src={mailSVG} alt="E-mail" />
               <p>contato@babakery.com.br</p>
             </article>
-            <Ident />
+            <div />
             <article>
               <img src={locationSVG} alt="Localização" />
               <p>

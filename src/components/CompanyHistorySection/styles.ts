@@ -35,4 +35,78 @@ export const Container = styled.div`
       line-height: 1.87rem;
     }
   }
+  // Medium devices (tablets with 768px or more)
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4.75rem 15% 6.25rem;
+
+    div {
+      margin: 0;
+      margin-bottom: 2rem;
+      img {
+        width: 33rem;
+      }
+    }
+    article {
+      > div {
+        margin-bottom: 1.94rem;
+      }
+      p {
+        max-width: 33rem;
+      }
+    }
+  }
+
+  // Small devices (landscape phones, 576px or more)
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4.75rem 17% 6.25rem;
+
+    div {
+      margin: 0;
+      margin-bottom: 2rem;
+      img {
+        width: 33rem;
+      }
+    }
+    article {
+      > div {
+        margin-bottom: 1.94rem;
+      }
+      p {
+        max-width: 33rem;
+      }
+    }
+  }
+
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4.75rem 20% 6.25rem;
+
+    div {
+      margin: 0;
+      margin-bottom: 2rem;
+      img {
+        display: none;
+      }
+    }
+    article {
+      > div {
+        margin-bottom: 1.94rem;
+      }
+      p {
+        max-width: none;
+      }
+    }
+  }
 `;

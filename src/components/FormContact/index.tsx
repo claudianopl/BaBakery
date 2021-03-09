@@ -1,10 +1,9 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { FiUser, FiSmartphone, FiMail, FiAlignLeft } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { motion } from 'framer-motion';
-import Aos from 'aos';
 import { InputBlock, ContainerFormContact } from './styles';
 import 'aos/dist/aos.css';
 

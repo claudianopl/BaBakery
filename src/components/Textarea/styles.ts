@@ -55,6 +55,20 @@ export const Container = styled.div<ContainerProps>`
     css`
       color: #d6613e;
     `}
+  // Medium devices (tablets with 768px or more)
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    width: calc(100% - 5.62rem);
+  }
+  // Small devices (landscape phones, 576px or more)
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    width: calc(100% - 6rem);
+  }
+
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    width: calc(100% - 1.2rem);
+    margin: 0;
+  }
 `;
 
 export const Error = styled(Tooltip)`

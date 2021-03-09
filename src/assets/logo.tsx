@@ -2,82 +2,67 @@ import React from 'react';
 
 import { motion } from 'framer-motion';
 
+const pathVariantsBaBakery = {
+  hidden: {
+    opacity: 0,
+    pathLength: 0,
+  },
+  visible: {
+    opacity: 1,
+    pathLength: 1,
+    transition: {
+      duration: 0.3,
+      ease: 'easeInOut',
+    },
+  },
+};
+
+const pathVariantsCakeStudio = {
+  hidden: {
+    opacity: 0,
+    pathLength: 0,
+  },
+  visible: {
+    opacity: 1,
+    pathLength: 1,
+    transition: {
+      delay: 0.3,
+      ease: 'easeInOut',
+    },
+  },
+};
+
+const pathVariantsRollingPin = {
+  hidden: {
+    opacity: 0,
+    pathSpacing: 0,
+  },
+  visible: {
+    opacity: 1,
+    pathSpacing: 1,
+    transition: {
+      delay: 0.6,
+      ease: 'easeInOut',
+    },
+  },
+};
+
+const pathVariantsHeart = {
+  hidden: {
+    opacity: 0,
+    pathSpacing: 0,
+  },
+  visible: {
+    opacity: 1,
+    pathSpacing: 1,
+    transition: {
+      delay: 0.9,
+      ease: 'easeInOut',
+    },
+  },
+};
+
 const SvgLogo: React.FC = () => {
-  const pathVariants = {
-    hidden: {
-      opacity: 0,
-      pathLength: 0,
-    },
-    visible: {
-      opacity: 1,
-      pathLength: 1,
-      transition: {
-        duration: 2,
-        ease: 'easeInOut',
-      },
-    },
-  };
-
-  const pathVariantsBaBakery = {
-    hidden: {
-      opacity: 0,
-      pathLength: 0,
-    },
-    visible: {
-      opacity: 1,
-      pathLength: 1,
-      transition: {
-        duration: 0.3,
-        ease: 'easeInOut',
-      },
-    },
-  };
-
-  const pathVariantsCakeStudio = {
-    hidden: {
-      opacity: 0,
-      pathLength: 0,
-    },
-    visible: {
-      opacity: 1,
-      pathLength: 1,
-      transition: {
-        delay: 0.3,
-        ease: 'easeInOut',
-      },
-    },
-  };
-
-  const pathVariantsRollingPin = {
-    hidden: {
-      opacity: 0,
-      pathSpacing: 0,
-    },
-    visible: {
-      opacity: 1,
-      pathSpacing: 1,
-      transition: {
-        delay: 0.6,
-        ease: 'easeInOut',
-      },
-    },
-  };
-
-  const pathVariantsHeart = {
-    hidden: {
-      opacity: 0,
-      pathSpacing: 0,
-    },
-    visible: {
-      opacity: 1,
-      pathSpacing: 1,
-      transition: {
-        delay: 0.9,
-        ease: 'easeInOut',
-      },
-    },
-  };
-
   return (
     <motion.svg
       xmlns="http://www.w3.org/2000/svg"

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
+import { motion } from 'framer-motion';
 
 export const Overlay = styled.div`
   background: rgba(203, 203, 203, 0.8);
@@ -12,10 +13,10 @@ export const Overlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
+  z-index: 20;
 `;
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
   background: #fff;
   padding: 2.81rem 2.62rem;
   display: flex;
@@ -41,6 +42,25 @@ export const Container = styled.div`
       height: 10px;
     }
   }
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    width: 95vw;
+    height: 95vh;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    .ProductsImage {
+      margin-right: 0;
+      width: 15rem;
+      height: 12rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  // Small devices (landscape phones, 576px or more)
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    width: 85vw;
+  }
 `;
 
 export const DescriptionProducts = styled.div`
@@ -60,6 +80,24 @@ export const DescriptionProducts = styled.div`
     font-size: 0.87rem;
     line-height: 1.87rem;
   }
+
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    .description {
+      margin-bottom: 2rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+    .price {
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+    h4 {
+      margin-left: 2rem;
+      margin-right: 2rem;
+      max-width: none;
+    }
+  }
 `;
 
 export const QuantityAndAddCar = styled.div`
@@ -70,6 +108,11 @@ export const QuantityAndAddCar = styled.div`
     padding: 6px 10px;
     text-align: center;
     border-radius: 4px;
+  }
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    margin-right: 1rem;
+    margin-left: 1rem;
   }
 `;
 

@@ -1,8 +1,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import Aos from 'aos';
 import 'aos/dist/aos.css';
 
 import {
@@ -15,6 +14,26 @@ import {
 import ModalProducts from '../ModalProducts';
 import formatValue from '../../utils/formatValue';
 import { useModal } from '../../hooks/modalData';
+
+/**
+ * Animation
+ */
+const transitionTheTop = {
+  hidden: {
+    y: -500,
+  },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, delay: (i - 2) * 0.1 },
+  }),
+};
+
+const transitionTheTopExit = {
+  opacity: 0,
+  y: -500,
+  transition: { duration: 0.5 },
+};
 
 const ProductsSection: React.FC = () => {
   /**
@@ -39,26 +58,6 @@ const ProductsSection: React.FC = () => {
   const openProducts = useCallback(() => {
     isViewMore === false ? setIsViewMore(true) : setIsViewMore(false);
   }, [isViewMore]);
-
-  /**
-   * Animation
-   */
-  const transitionTheTop = {
-    hidden: {
-      y: -500,
-    },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      transition: { duration: 1, delay: (i - 2) * 0.1 },
-    }),
-  };
-
-  const transitionTheTopExit = {
-    opacity: 0,
-    y: -500,
-    transition: { duration: 0.5 },
-  };
 
   return (
     <>
@@ -89,24 +88,21 @@ const ProductsSection: React.FC = () => {
                 <AnimatePresence>
                   {isViewMore && (
                     <div style={{ overflow: 'hidden' }}>
-                      <motion.div
+                      <ProductsAppearOnClick
+                        onClick={() => showModalToTheUser(product.id)}
+                        onKeyPress={() => showModalToTheUser(product.id)}
+                        role="button"
+                        tabIndex={0}
                         initial="hidden"
                         animate="visible"
                         custom={index}
                         variants={transitionTheTop}
                         exit={transitionTheTopExit}
                       >
-                        <ProductsAppearOnClick
-                          onClick={() => showModalToTheUser(product.id)}
-                          onKeyPress={() => showModalToTheUser(product.id)}
-                          role="button"
-                          tabIndex={0}
-                        >
-                          <img src={product.image} alt="Products" />
-                          <h5>{product.title}</h5>
-                          <p>{formatValue(product.price)}</p>
-                        </ProductsAppearOnClick>
-                      </motion.div>
+                        <img src={product.image} alt="Products" />
+                        <h5>{product.title}</h5>
+                        <p>{formatValue(product.price)}</p>
+                      </ProductsAppearOnClick>
                     </div>
                   )}
                 </AnimatePresence>

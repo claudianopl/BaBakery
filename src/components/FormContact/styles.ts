@@ -27,6 +27,29 @@ export const ContainerFormContact = styled.div`
   button:hover {
     background: ${darken(0.1, '#D6613E')};
   }
+
+  // Medium devices (tablets with 768px or more)
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    h2 {
+      max-width: none;
+    }
+  }
+  // Small devices (landscape phones, 576px or more)
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    h2 {
+      max-width: none;
+    }
+  }
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    h2 {
+      font-size: 2rem;
+      max-width: none;
+    }
+    button {
+      margin-left: 0;
+    }
+  }
 `;
 
 export const InputBlock = styled.div`
@@ -34,12 +57,16 @@ export const InputBlock = styled.div`
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
-  :first-child {
-    align-items: start;
-  }
   label {
     position: absolute;
     display: block;
     text-transform: uppercase;
+  }
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    flex-direction: column;
+    label {
+      position: static;
+    }
   }
 `;

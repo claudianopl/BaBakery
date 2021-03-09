@@ -48,7 +48,8 @@ export const SectionBanner = styled.section`
         margin-top: 2.07rem;
         animation: bounce-left 0.8s 1s both;
         opacity: 0;
-
+        box-shadow: 0 0 0 0 var(--product-title-and-button-color) inset,
+          0 0 0 0 var(--product-title-and-button-color);
         @keyframes bounce-left {
           0% {
             transform: translateX(-48px);
@@ -105,6 +106,30 @@ export const SectionBanner = styled.section`
         box-shadow: 0 0 10px 0 var(--product-title-and-button-color) inset,
           0 0 10px 4px var(--product-title-and-button-color);
       }
+    }
+  }
+
+  // Medium devices (tablets with 768px or more)
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    > div {
+      min-width: auto;
+      margin: 0 10%;
+    }
+  }
+
+  // Small devices (landscape phones, 576 px or more)
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    > div {
+      min-width: auto;
+      margin: 0 12%;
+    }
+  }
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    > div {
+      min-width: auto;
+      margin: 0;
+      margin-left: 20%;
     }
   }
 `;

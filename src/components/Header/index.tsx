@@ -9,6 +9,7 @@ import instagram from '../../assets/icons/instagram.svg';
 import twitter from '../../assets/icons/twitter.svg';
 import shoppingCart from '../../assets/icons/shoppingCart.svg';
 import SvgLogo from '../../assets/logo';
+import NavegationMobile from '../NavMobile/index';
 
 import { useCart } from '../../hooks/cart';
 
@@ -25,8 +26,29 @@ import {
   SubTotalProducts,
   Emptycart,
   CartQuantity,
+  NavWeb,
 } from './styles';
 import formatValue from '../../utils/formatValue';
+
+/**
+ * Animation
+ */
+const transitionTheTop = {
+  hidden: {
+    opacity: 0,
+    x: 0,
+  },
+  visible: {
+    opacity: 1,
+    z: 0,
+  },
+};
+
+const transitionTheTopExit = {
+  opacity: 0,
+
+  transition: { duration: 0.2 },
+};
 
 const Header: React.FC = () => {
   /**
@@ -49,34 +71,16 @@ const Header: React.FC = () => {
     totalItensProducts,
   } = useCart();
 
-  /**
-   * Animation
-   */
-  const transitionTheTop = {
-    hidden: {
-      opacity: 0,
-      x: 0,
-    },
-    visible: {
-      opacity: 1,
-      z: 0,
-    },
-  };
-
-  const transitionTheTopExit = {
-    opacity: 0,
-
-    transition: { duration: 0.2 },
-  };
-
   return (
     <header style={{ background: 'var(--header)' }}>
+      <NavegationMobile />
+
       <Container>
-        <nav>
+        <NavWeb>
           <NavLink to="#">Quem Somos</NavLink>
           <NavLink to="#">EQUIPE</NavLink>
           <NavLink to="#">CONTATO</NavLink>
-        </nav>
+        </NavWeb>
 
         <Logo>
           <a href="#">
@@ -175,7 +179,7 @@ const Header: React.FC = () => {
           )}
         </AnimatePresence>
       </Container>
-      <div style={{ background: 'var(--header-line)', height: '21px' }} />
+      <div style={{ background: 'var(--header-line)', height: '1.31rem' }} />
     </header>
   );
 };

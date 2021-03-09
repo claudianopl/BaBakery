@@ -1,10 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 import { darken } from 'polished';
-
-interface IsViewMore {
-  isView?: boolean;
-}
 
 export const Container = styled.div`
   max-width: 62.75rem;
@@ -33,6 +30,30 @@ export const Container = styled.div`
   button:hover {
     background: ${darken(0.1, '#D6613E')};
   }
+
+  // Medium devices (tablets with 768px or more)
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    max-width: none;
+    margin: 0 10%;
+  }
+  // Small devices (landscape phones, 576px or more)
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    max-width: none;
+    margin: 0 12%;
+
+    button {
+      margin: 1.75rem auto 5.06rem;
+    }
+  }
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    max-width: none;
+    margin: 0 15%;
+
+    button {
+      margin: 1.75rem auto 5.06rem;
+    }
+  }
 `;
 
 export const Ident = styled.div`
@@ -48,6 +69,18 @@ export const Products = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 3.12rem 2.68rem;
   overflow: hidden;
+  // Medium devices (tablets with 768px or more)
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    grid-gap: 3.12rem 1rem;
+  }
+  // Small devices (landscape phones, 576px or more)
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    display: block;
+  }
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    display: block;
+  }
 `;
 
 export const FirstProducts = styled.div`
@@ -76,9 +109,25 @@ export const FirstProducts = styled.div`
     position: absolute;
     bottom: 1.62rem;
   }
+  // Medium devices (tablets with 768px or more)
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    min-height: 25rem;
+  }
+  // Small devices (landscape phones, 576px or more)
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    max-width: 19.12rem;
+    margin: auto;
+    margin-bottom: 3.12rem;
+  }
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    max-width: 19.12rem;
+    margin: auto;
+    margin-bottom: 3.12rem;
+  }
 `;
 
-export const ProductsAppearOnClick = styled.div`
+export const ProductsAppearOnClick = styled(motion.div)`
   outline: 0;
   cursor: pointer;
   background: var(--white);
@@ -103,5 +152,17 @@ export const ProductsAppearOnClick = styled.div`
     font-size: 1.13rem;
     position: absolute;
     bottom: 1.62rem;
+  }
+  // Small devices (landscape phones, 576px or more)
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    max-width: 19.12rem;
+    margin: auto;
+    margin-bottom: 3.12rem;
+  }
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    max-width: 19.12rem;
+    margin: auto;
+    margin-bottom: 3.12rem;
   }
 `;

@@ -9,40 +9,77 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   position: relative;
-  nav {
-    height: 8.125rem;
+
+  // Medium devices (tablets with 768px or more)
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    max-width: none;
+    margin: 0 10%;
     display: flex;
-    align-items: center;
-    a {
-      color: var(--titles-to-navigations);
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 0.88rem;
+  }
 
-      & + a {
-        margin-left: 1.875rem;
+  // Small devices (landscape phones, 576px or more)
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    max-width: none;
+    margin: 0 12%;
+    display: flex;
+    height: 6.125rem;
+  }
+
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    max-width: none;
+    margin: 0 15%;
+    display: flex;
+    height: 5.125rem;
+  }
+`;
+
+export const NavWeb = styled.nav`
+  height: 8.125rem;
+  display: flex;
+  align-items: center;
+  a {
+    color: var(--titles-to-navigations);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.88rem;
+
+    & + a {
+      margin-left: 1.875rem;
+    }
+
+    animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+
+    @keyframes tracking-in-expand {
+      0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
       }
-
-      animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1)
-        both;
-
-      @keyframes tracking-in-expand {
-        0% {
-          letter-spacing: -0.5em;
-          opacity: 0;
-        }
-        40% {
-          opacity: 0.6;
-        }
-        100% {
-          opacity: 1;
-        }
+      40% {
+        opacity: 0.6;
       }
-
-      &:hover {
-        color: ${lighten(0.2, '#303030')};
+      100% {
+        opacity: 1;
       }
     }
+
+    &:hover {
+      color: ${lighten(0.2, '#303030')};
+    }
+  }
+  // Medium devices (tablets with 768px or more)
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    display: none;
+  }
+
+  // Small devices (landscape phones, 576px or more)
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    display: none;
+  }
+
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    display: none;
   }
 `;
 
@@ -59,20 +96,35 @@ export const Logo = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    img {
-      animation: slide-in-bck-center 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-        0.3s both;
-      width: 9.69rem;
-      height: 6.94rem;
-    }
-    @keyframes slide-in-bck-center {
-      0% {
-        transform: translateZ(600px);
-        opacity: 0;
+  }
+  // Medium devices (tablets with 768px or more)
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    margin: 0;
+    margin-left: auto;
+  }
+
+  // Small devices (landscape phones, 576px or more)
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    margin: 0;
+    margin-left: auto;
+    div {
+      height: 8.63rem;
+      width: 9.63rem;
+      svg {
+        width: 8rem;
       }
-      100% {
-        transform: translateZ(0);
-        opacity: 1;
+    }
+  }
+
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    margin: 0;
+    margin-left: 20%;
+    div {
+      height: 7.63rem;
+      width: 8.63rem;
+      svg {
+        width: 8rem;
       }
     }
   }
@@ -98,6 +150,33 @@ export const SocialAndCar = styled.div`
       position: relative;
       cursor: pointer;
       outline: 0;
+    }
+  }
+  // Medium devices (tablets with 768px or more)
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    margin: 0;
+    margin-left: 10%;
+  }
+
+  // Small devices (landscape phones, 576px or more)
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    margin: 0;
+    margin-left: 5%;
+    height: 6.13rem;
+  }
+
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    margin: 0;
+    margin-left: auto;
+    height: 5.13rem;
+    > div {
+      > a {
+        display: none;
+      }
+      > div {
+        margin-left: auto;
+      }
     }
   }
 `;
@@ -132,6 +211,7 @@ export const CartProducts = styled.div`
     width: 22.81rem;
     z-index: 1;
     background: #fff;
+    box-shadow: 2px 4px 10px 5px rgb(0, 0, 0, 0.2);
     > div {
       position: relative;
       margin: 1.5rem 1.87rem;
@@ -169,6 +249,24 @@ export const CartProducts = styled.div`
       }
     }
   }
+
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    > div:first-child {
+      width: 19rem;
+      right: -6%;
+      top: 100%;
+      > div {
+        margin: 1rem 1rem;
+        > div {
+          align-items: flex-start;
+        }
+        > button {
+          padding: 0.43rem 4.43rem;
+        }
+      }
+    }
+  }
 `;
 
 export const TriangleUp = styled.div`
@@ -180,6 +278,11 @@ export const TriangleUp = styled.div`
   border-left: 14px solid transparent;
   border-right: 14px solid transparent;
   border-bottom: 27px solid #fff;
+
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    right: 0px;
+  }
 `;
 
 export const TitleProducts = styled.div`
@@ -199,6 +302,12 @@ export const TitleProducts = styled.div`
 
     svg {
       font-size: 0;
+    }
+  }
+  // Extra small devices (portrait phones, under 576px)
+  @media (max-width: 575.98px) {
+    strong {
+      width: 9rem;
     }
   }
 `;
