@@ -237,7 +237,6 @@ export const CartProducts = styled.div`
         color: var(--white);
         padding: 0.43rem 5.43rem;
         border-radius: 8px;
-        text-transform: uppercase;
         transition: background-color 0.2s;
 
         &:hover {

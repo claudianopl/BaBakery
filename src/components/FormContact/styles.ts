@@ -62,6 +62,9 @@ export const InputBlock = styled.div`
     display: block;
     text-transform: uppercase;
   }
+  &:nth-child(4) {
+    align-items: start;
+  }
   // Extra small devices (portrait phones, under 576px)
   @media (max-width: 575.98px) {
     flex-direction: column;
