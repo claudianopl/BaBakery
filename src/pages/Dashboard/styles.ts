@@ -66,7 +66,6 @@ export const CompanyLocation = styled.div`
 
     padding: 0.7rem 2.18rem;
     text-align: center;
-    text-transform: uppercase;
     font-weight: 700;
     transition-delay: 1s;
 

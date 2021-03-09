@@ -43,6 +43,7 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
+    text-transform: uppercase;
   }
 
   a {
