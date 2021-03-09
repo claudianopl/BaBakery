@@ -156,6 +156,8 @@ export const ContactFooter = styled.div`
       display: flex;
       align-items: center;
       p {
+        color: var(--title-input-placeholder-and-contact);
+
         font-size: 1rem;
         font-weight: 700;
         margin-left: 0.5rem;

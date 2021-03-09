@@ -4,6 +4,7 @@ import { darken } from 'polished';
 
 export const ContainerFormContact = styled.div`
   h2 {
+    color: var(--title-input-placeholder-and-contact);
     font-size: 2.18rem;
     line-height: 2.62rem;
     max-width: 29.5rem;
@@ -58,6 +59,7 @@ export const InputBlock = styled.div`
   display: flex;
   align-items: center;
   label {
+    color: var(--title-input-placeholder-and-contact);
     position: absolute;
     display: block;
     text-transform: uppercase;
